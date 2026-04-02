@@ -542,7 +542,14 @@ class ComposerStaticInit93fcba06050b7b5aade95ead198c3e86
 
     public static $classMap = array (
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Models\\Ala' => __DIR__ . '/../..' . '/app/Models/Ala.php',
+        'App\\Models\\Leito' => __DIR__ . '/../..' . '/app/Models/Leito.php',
+        'App\\Models\\Paciente' => __DIR__ . '/../..' . '/app/Models/Paciente.php',
+        'App\\Models\\Quarto' => __DIR__ . '/../..' . '/app/Models/Quarto.php',
+        'App\\Models\\StatusLeito' => __DIR__ . '/../..' . '/app/Models/StatusLeito.php',
+        'App\\Models\\StatusQuarto' => __DIR__ . '/../..' . '/app/Models/StatusQuarto.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\Usuario' => __DIR__ . '/../..' . '/app/Models/Usuario.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
