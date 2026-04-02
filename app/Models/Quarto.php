@@ -14,4 +14,9 @@ class Quarto extends Model
         'data_criacao',
         'alas_id'
     ];
+
+    public function leitos()
+    {
+        return $this->hasMany(Leito::class);
+    }
 }

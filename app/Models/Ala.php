@@ -15,4 +15,9 @@ class Ala extends Model
         'data_criacao',
         'descricao'
     ];
+
+    public function quartos()
+    {
+        return $this->hasMany(Quarto::class);
+    }
 }

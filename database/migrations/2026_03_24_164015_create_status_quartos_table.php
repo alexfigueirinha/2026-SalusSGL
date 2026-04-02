@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('status_quartos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('status');
-            $table->foreign('quartos_id')->references('id')->on('quarto');
+            $table->unsignedBigInteger('quartos_id');
+            $table->enum('status', ['disponivel', 'ocupado', 'em_limpeza', 'bloqueado'])->nullable(false)->default('disponivel');
+            $table->foreign('quartos_id')->references('id')->on('quartos');
         });
     }
 

@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('quartos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('alas_id');
             $table->integer('total_leitos');
-            $table->datetime('data_criacao');
-            $table->foreign('alas_id')->references('id')->on('ala');
+            $table->dateTime('data_criacao');
+            $table->foreign('alas_id')->references('id')->on('alas');
         });
     }
 

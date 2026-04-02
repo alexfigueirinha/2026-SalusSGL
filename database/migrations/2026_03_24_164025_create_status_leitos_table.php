@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('status_leitos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('status');
-            $table->foreign('leitos_id')->references('id')->on('leitos')->onDelete('cascade');
+            $table->unsignedBigInteger('leitos_id');
+            $table->enum('status', ['disponivel', 'ocupado', 'em_limpeza', 'emergencia', 'reserva', 'manutencao'])->nullable(false)->default('disponivel');
+            $table->foreign('leitos_id')->references('id')->on('leitos');
         });
     }
 

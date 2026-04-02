@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('leitos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('quartos_id');
             $table->string('nome_paciente');
             $table->datetime('atualizacao');
-            $table->foreign('quartos_id')->references('id')->on('quarto');
+            $table->foreign('quartos_id')->references('id')->on('quartos');
        });
     }
 
