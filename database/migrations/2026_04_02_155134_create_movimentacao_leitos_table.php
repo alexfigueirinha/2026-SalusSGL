@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('movimentacao_leitos', function (Blueprint $table) {
             $table->id();
-            $table->foreign('quartos_id')->references('id')->on('quartos')->onDelete('cascade');
-            $table->foreign('leitos_id')->references('id')->on('leitos')->onDelete('cascade');
+            $table->unsignedBigInteger('quartos_id');
+            $table->unsignedBigInteger('leitos_id');
+            $table->foreign('quartos_id')->references('id')->on('quartos');
+            $table->foreign('leitos_id')->references('id')->on('leitos');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Livewire\Ala;
 
 use App\Models\Ala;
+use App\Models\Quarto;
 use Livewire\Component;
 
 class AlasCreate extends Component
@@ -23,6 +24,10 @@ class AlasCreate extends Component
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('ala.index');
+    }
+
+    public function quartos() {
+    return $this->hasMany(Quarto::class); 
     }
     
     public function render()

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Quarto;
 
+use App\Models\Ala;
+use App\Models\Leito;
 use App\Models\Quarto;
 use Livewire\Component;
 
@@ -21,6 +23,14 @@ class QuartosCreate extends Component
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('quarto.index');
+    }
+
+    public function leitos() {
+    return $this->hasMany(Leito::class); 
+    }
+
+    public function ala() {
+    return $this->belongsTo(Ala::class); 
     }
 
     public function render()
