@@ -12,4 +12,9 @@ class StatusLeito extends Model
         'status',
         'leitos_id'
     ];
+
+    public function leitos()
+    {
+        return $this->belongsTo(Leito::class);
+    }
 }

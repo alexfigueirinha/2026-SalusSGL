@@ -14,8 +14,7 @@ class StatusLeitosCreate extends Component
      public function store(){
             StatusLeito::create([
             'status' => $this->status,
-            'leitos_id' => $this->leitos_id,
-    
+            'leitos_id' => $this->leitos_id
         ]);
 
         session()->flash('success', 'Cadastrado');

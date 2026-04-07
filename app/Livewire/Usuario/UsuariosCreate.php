@@ -22,7 +22,7 @@ class UsuariosCreate extends Component
             'tipo' => $this->tipo,
             'telefone' => $this->telefone,
             'status_usuario' => $this->status_usuario,
-            'data_cadastro' => $this->data_cadastro,
+            'data_cadastro' => $this->data_cadastro
         ]);
 
         session()->flash('success', 'Cadastrado');

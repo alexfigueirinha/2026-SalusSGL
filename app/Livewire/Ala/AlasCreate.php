@@ -19,7 +19,7 @@ class AlasCreate extends Component
             'nome' => $this->nome,
             'total_quartos' => $this->total_quartos,
             'data_criacao' => $this->data_criacao,
-            'descricao' => $this->descricao,
+            'descricao' => $this->descricao
         ]);
 
         session()->flash('success', 'Cadastrado');

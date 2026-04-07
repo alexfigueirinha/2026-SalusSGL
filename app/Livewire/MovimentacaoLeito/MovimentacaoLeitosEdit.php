@@ -10,6 +10,7 @@ class MovimentacaoLeitosEdit extends Component
 
     public $quartos_id;
     public $leitos_id;
+    public $usuarios_id;
     public $movimentacaoLeitoId;
 
     public function mount($id){
@@ -17,6 +18,7 @@ class MovimentacaoLeitosEdit extends Component
 
         $this->quartos_id = $movimentacaoLeito->quartos_id;
         $this->leitos_id = $movimentacaoLeito->leitos_id;
+        $this->usuarios_id = $movimentacaoLeito->usuarios_id;
         $this->movimentacaoLeitoId = $movimentacaoLeito->id;
         
         }
@@ -26,6 +28,7 @@ class MovimentacaoLeitosEdit extends Component
 
         $movimentacaoLeito->quartos_id = $this->quartos_id;
         $movimentacaoLeito->leitos_id = $this->leitos_id;
+        $movimentacaoLeito->usarios_id = $this->usuarios_id;
 
         $movimentacaoLeito->save();
 

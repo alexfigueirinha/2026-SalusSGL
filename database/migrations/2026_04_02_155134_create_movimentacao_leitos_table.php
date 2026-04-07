@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('quartos_id');
             $table->unsignedBigInteger('leitos_id');
+            $table->unsignedBigInteger('usuarios_id');
             $table->foreign('quartos_id')->references('id')->on('quartos');
             $table->foreign('leitos_id')->references('id')->on('leitos');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->timestamps();
         });
     }

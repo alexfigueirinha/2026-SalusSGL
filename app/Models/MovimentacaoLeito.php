@@ -11,6 +11,22 @@ class MovimentacaoLeito extends Model
 
     protected $fillable =[
         'quartos_id',
-        'leitos_id'
+        'leitos_id',
+        'usuarios_id'
     ];
+
+    public function quartos()
+    {
+        return $this->belongsTo(Quarto::class);
+    }
+
+    public function leitos()
+    {
+        return $this->belongsTo(Leito::class);
+    }
+
+    public function usuarios()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
 }

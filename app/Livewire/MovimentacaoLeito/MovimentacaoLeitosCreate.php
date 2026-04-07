@@ -14,7 +14,7 @@ class MovimentacaoLeitosCreate extends Component
             MovimentacaoLeito::create([
             'quartos_id' => $this->quartos_id,
             'leitos_id' => $this->leitos_id,
-    
+            'usuarios_id' => $this->usuarios_id
         ]);
 
         session()->flash('success', 'Cadastrado');

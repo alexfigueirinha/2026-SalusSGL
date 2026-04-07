@@ -20,8 +20,7 @@ class LeitosCreate extends Component
             Leito::create([
             'nome_paciente' => $this->nome_paciente,
             'atuzlizacao' => $this->atualizacao,
-            'quartos_id' => $this->quartos_id,
-    
+            'quartos_id' => $this->quartos_id
         ]);
 
         session()->flash('success', 'Cadastrado');

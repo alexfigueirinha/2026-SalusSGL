@@ -16,4 +16,9 @@ class Paciente extends Model
         'telefone',
         'leito_atual'
     ];
+
+    public function internacaos()
+    {
+        return $this->hasMany(Internacao::class);
+    }
 }

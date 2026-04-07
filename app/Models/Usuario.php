@@ -17,4 +17,9 @@ class Usuario extends Model
         'status_usuário',
         'data_cadastro',
     ];
+
+    public function movimentacaoLeitos()
+    {
+        return $this->hasMany(MovimentacaoLeito::class);
+    }
 }

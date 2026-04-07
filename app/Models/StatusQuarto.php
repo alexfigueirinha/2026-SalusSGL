@@ -12,4 +12,9 @@ class StatusQuarto extends Model
         'status',
         'quartos_id'
     ];
+
+    public function quartos()
+    {
+        return $this->belongsTo(Quarto::class);
+    }
 }

@@ -19,4 +19,19 @@ class Leito extends Model
     {
         return $this->belongsTo(Quarto::class);
     }
+
+    public function internacaos()
+    {
+        return $this->hasMany(Internacao::class);
+    }
+
+    public function statusLeitos()
+    {
+        return $this->hasMany(StatusLeito::class);
+    }
+
+    public function movimentacaoLeitos()
+    {
+        return $this->hasMany(MovimentacaoLeito::class);
+    }
 }
