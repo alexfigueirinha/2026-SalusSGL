@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class QuartosEdit extends Component
 {
-    public $nome;
+    public $quarto;
     public $total_leitos;
     public $alas_id;
     public $quartoId;
@@ -17,7 +17,7 @@ class QuartosEdit extends Component
         $quarto = Quarto::find($id);
 
         $this->quartoId = $quarto->id;
-        $this->nome = $quarto->nome;
+        $this->quarto = $quarto->quarto;
         $this->total_leitos = $quarto->total_leitos;
         $this->alas_id = $quarto->id;
     }
@@ -26,7 +26,7 @@ class QuartosEdit extends Component
     {
         $quarto = Quarto::find($this->quartoId);
 
-        $this->nome = $quarto->nome;
+        $this->quarto = $quarto->quarto;
         $this->total_leitos = $quarto->total_leitos;
         $this->alas_id = $quarto->alas_id;
 

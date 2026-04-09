@@ -10,6 +10,7 @@ class AlasEdit extends Component
 {
     public $nome;
     public $total_quartos;
+    public $quartos_cadastrados;
     public $data_criacao;
     public $descricao;
     public $alaId;
@@ -21,6 +22,7 @@ class AlasEdit extends Component
         $this->nome = $ala->nome;
         $this->total_quartos = $ala->data_hora;
         $this->data_criacao = $ala->data_criacao;
+        $this->quartos_cadastrados = $ala->quartos_cadastrados;
         $this->descricao = $ala->descricao;
 
     }
@@ -29,7 +31,8 @@ class AlasEdit extends Component
         $ala = Ala::find($this->alaId);
 
         $ala->nome = $this->nome;
-         $ala->total_quartos = $this->total_quartos;
+        $ala->total_quartos = $this->total_quartos;
+        $ala->quartos_cadastrados = $this->quartos_cadastrados;
         $ala->data_criacao = $this->data_criacao;
         $ala->descricao = $this->descricao;
 

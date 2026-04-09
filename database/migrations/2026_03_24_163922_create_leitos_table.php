@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('quartos_id');
-            $table->string('nome_paciente');
+            $table->string('leito');
             $table->datetime('atualizacao');
             $table->foreign('quartos_id')->references('id')->on('quartos');
        });

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nome')->unique;
             $table->integer('total_quartos');
+            $table->integer('quartos_cadastrados')->nullable(true);
             $table->datetime('data_criacao')->nullable(true);
             $table->string('descricao');
         });

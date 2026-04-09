@@ -9,14 +9,14 @@ use Livewire\Component;
 
 class QuartosCreate extends Component
 {
-    public $nome;
+    public $quarto;
     public $total_leitos;
     public $alas_id;
 
     public function store()
     {
         Quarto::create([
-            'nome' => $this->nome,
+            'quarto' => $this->quarto,
             'total_leitos' => $this->total_leitos,
             'alas_id' => $this->alas_id
         ]);
@@ -35,6 +35,7 @@ class QuartosCreate extends Component
 
     public function render()
     {
-        return view('livewire.quarto.quartos-create');
+        $alas = Ala::all();
+        return view('livewire.quarto.quartos-create', compact('alas'));
     }
 }

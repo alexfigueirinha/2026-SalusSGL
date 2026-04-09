@@ -12,7 +12,6 @@ class AlasIndex extends Component
     {
 
         $alas = Ala::all();
-
         return view('livewire.ala.alas-index', compact('alas'));
     }
 }

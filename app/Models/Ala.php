@@ -12,6 +12,7 @@ class Ala extends Model
     protected $fillable = [
         'nome',
         'total_quartos',
+        'quartos_cadastrados',
         'data_criacao',
         'descricao'
     ];

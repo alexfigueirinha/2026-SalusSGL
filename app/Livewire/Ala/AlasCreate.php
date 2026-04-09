@@ -12,6 +12,7 @@ class AlasCreate extends Component
     public $nome;
     public $total_quartos;
     public $data_criacao;
+    public $quartos_cadastrados;
     public $descricao;
 
     public function store(){
@@ -19,6 +20,7 @@ class AlasCreate extends Component
             'nome' => $this->nome,
             'total_quartos' => $this->total_quartos,
             'data_criacao' => $this->data_criacao,
+            'quartos_cadastrados' => $this->quartos_cadastrados,
             'descricao' => $this->descricao
         ]);
 

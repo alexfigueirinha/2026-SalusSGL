@@ -12,13 +12,13 @@ use Livewire\Component;
 class LeitosCreate extends Component
 {
 
-    public $nome_paciente;
+    public $leito;
     public $atualizacao;
     public $quartos_id;
 
     public function store(){
             Leito::create([
-            'nome_paciente' => $this->nome_paciente,
+            'leito' => $this->leito,
             'atuzlizacao' => $this->atualizacao,
             'quartos_id' => $this->quartos_id
         ]);
@@ -45,6 +45,7 @@ class LeitosCreate extends Component
 
     public function render()
     {
-        return view('livewire.leito.leitos-create');
+        $quartos = Quarto::all();
+        return view('livewire.leito.leitos-create', compact('quartos'));
     }
 }

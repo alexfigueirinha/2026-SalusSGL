@@ -10,8 +10,8 @@ class Quarto extends Model
     use HasFactory;
 
     protected $fillable = [
+        'quarto',
         'total_leitos',
-        'data_criacao',
         'alas_id'
     ];
 

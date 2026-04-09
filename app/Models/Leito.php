@@ -10,7 +10,7 @@ class Leito extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome_paciente',
+        'leito',
         'atualizacao',
         'quartos_id'
     ];
