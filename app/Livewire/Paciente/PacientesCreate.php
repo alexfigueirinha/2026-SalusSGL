@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Paciente;
 
+use App\Models\Leito;
 use App\Models\Paciente;
 use Livewire\Component;
 
@@ -12,6 +13,7 @@ class PacientesCreate extends Component
     public $data_nascimento;
     public $telefone;
     public $leito_atual;
+    public $data_entrada;
 
     public function store()
     {
@@ -20,7 +22,8 @@ class PacientesCreate extends Component
             'cpf' => $this->cpf,
             'data_nascimento' => $this->data_nascimento,
             'telefone' => $this->telefone,
-            'leito_atual' => $this->leito_atual
+            'leito_atual' => $this->leito_atual,
+            'data_entrada' => $this->data_entrada
         ]);
 
         session()->flash('success', 'Cadastrado');
@@ -29,6 +32,7 @@ class PacientesCreate extends Component
 
     public function render()
     {
-        return view('livewire.paciente.pacientes-create');
+        $leitos = Leito::all();
+        return view('livewire.paciente.pacientes-create' , compact('leitos'));
     }
 }

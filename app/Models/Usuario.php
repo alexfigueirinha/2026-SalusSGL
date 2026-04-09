@@ -14,7 +14,6 @@ class Usuario extends Model
         'email',
         'tipo',
         'telefone',
-        'status_usuário',
         'data_cadastro',
     ];
 

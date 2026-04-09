@@ -12,7 +12,9 @@ class PacientesEdit extends Component
     public $data_nascimento;
     public $telefone;
     public $leito_atual;
+    public $data_entrada;
     public $pacienteId;
+
 
     public function mount($id)
     {
@@ -24,6 +26,7 @@ class PacientesEdit extends Component
         $this->data_nascimento = $paciente->data_nascimento;
         $this->telefone = $paciente->telefone;
         $this->leito_atual = $paciente->leito_atual;
+        $this->data_entrada = $paciente->data_entrada;
     }
 
     public function update()
@@ -35,6 +38,7 @@ class PacientesEdit extends Component
         $this->data_nascimento = $paciente->data_nascimento;
         $this->telefone = $paciente->telefone;
         $this->leito_atual = $paciente->leito_atual;
+        $this->data_entrada = $paciente->data_entrada;
 
         $paciente->save();
 

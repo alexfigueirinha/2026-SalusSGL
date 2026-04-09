@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('email')->unique;
             $table->string('tipo');
-            $table->integer('telefone');
-            $table->string('status_usuario');
+            $table->bigInteger('telefone');
             $table->datetime('data_cadastro');
         });
     }

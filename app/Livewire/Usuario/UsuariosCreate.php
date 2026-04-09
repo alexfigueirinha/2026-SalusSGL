@@ -12,7 +12,6 @@ class UsuariosCreate extends Component
     public $email;
     public $tipo;
     public $telefone;
-    public $status_usuario;
     public $data_cadastro;
 
     public function store(){
@@ -21,7 +20,6 @@ class UsuariosCreate extends Component
             'email' => $this->email,
             'tipo' => $this->tipo,
             'telefone' => $this->telefone,
-            'status_usuario' => $this->status_usuario,
             'data_cadastro' => $this->data_cadastro
         ]);
 
