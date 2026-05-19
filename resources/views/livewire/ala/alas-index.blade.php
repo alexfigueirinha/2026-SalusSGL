@@ -62,9 +62,9 @@
                     <td>{{ $ala->descricao }}</td>
                     <td> {{ $ala->total_quartos }}
                     <td>{{ $ala->quartos_cadastrados }}</td>
-                    <td>{{ \Carbon\Carbon::parse($ala->data_criacao)->format('d/m/Y H:i:s') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($ala->data_criacao)->format('d/m/Y') }}</td>
                     <td>
-                        <a href="{{ route('leito.edit', ['id' => $ala->id]) }}"
+                        <a href="{{ route('ala.edit', ['id' => $ala->id]) }}"
                             class="btn btn-primary btn-sm">Editar</a>
 
                         <button class="btn btn-danger btn-sm" wire:click="excluir({{ $ala->id }})"
