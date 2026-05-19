@@ -30,7 +30,7 @@ class LeitosCreate extends Component
     public function quartos() {
     return $this->belongsTo(Quarto::class); 
     }
-
+    
     public function statusLeitos() {
     return $this->hasMany(StatusLeito::class); 
     }

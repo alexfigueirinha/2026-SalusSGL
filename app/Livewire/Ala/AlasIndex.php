@@ -7,6 +7,17 @@ use Livewire\Component;
 
 class AlasIndex extends Component
 {
+    public $search = '';
+
+    public function delete($id)
+    {
+        $ala = Ala::find($id);
+
+        if ($ala != null) {
+            $ala->delete();
+            session()->flash('success', 'Excluído');
+        }
+    }
 
     public function render()
     {

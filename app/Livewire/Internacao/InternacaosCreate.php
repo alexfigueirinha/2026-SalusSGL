@@ -2,7 +2,11 @@
 
 namespace App\Livewire\Internacao;
 
+use App\Models\Ala;
 use App\Models\Internacao;
+use App\Models\Leito;
+use App\Models\Paciente;
+use App\Models\Quarto;
 use Livewire\Component;
 
 class InternacaosCreate extends Component
@@ -26,6 +30,22 @@ class InternacaosCreate extends Component
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('internacao.index');
+    }
+
+    public function quartos() {
+    return $this->belongsTo(Quarto::class); 
+    }
+
+    public function alas() {
+    return $this->belongsTo(Ala::class); 
+    }
+
+    public function leitos() {
+    return $this->belongsTo(Leito::class); 
+    }
+
+    public function pacientes() {
+    return $this->belongsTo(Paciente::class); 
     }
 
     public function render()

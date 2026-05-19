@@ -2,6 +2,7 @@
 
 namespace App\Livewire\StatusLeito;
 
+use App\Models\Leito;
 use App\Models\StatusLeito;
 use Livewire\Component;
 
@@ -19,6 +20,10 @@ class StatusLeitosCreate extends Component
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('status.leito.index');
+    }
+
+    public function leitos() {
+    return $this->belongsTo(Leito::class); 
     }
 
     public function render()

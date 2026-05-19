@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Paciente;
 
+use App\Models\Internacao;
 use App\Models\Leito;
 use App\Models\Paciente;
 use Livewire\Component;
@@ -28,6 +29,10 @@ class PacientesCreate extends Component
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('paciente.index');
+    }
+
+    public function internacaos() {
+    return $this->hasMany(Internacao::class); 
     }
 
     public function render()
