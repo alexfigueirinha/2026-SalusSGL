@@ -19,7 +19,7 @@ class LeitosCreate extends Component
     public function store(){
             Leito::create([
             'leito' => $this->leito,
-            'atuzlizacao' => $this->atualizacao,
+            'atualizacao' => $this->atualizacao,
             'quartos_id' => $this->quartos_id
         ]);
 

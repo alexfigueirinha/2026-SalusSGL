@@ -41,4 +41,32 @@
         <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
     </div>
 
+    <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Leito</th>
+                    <th>Atualização</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($alas as $ala)
+                <tr>
+                    <td>{{ $ala->id }}</td>
+                    <td>{{ $ala->leito }}</td>
+                    <td>{{ $ala->atualizacao }}</td>
+                    <td>{{ \Carbon\Carbon::parse($ala->data_criacao)->format('d/m/Y') }}</td>
+                    <td>
+                        <a href="{{ route('ala.edit', ['id' => $ala->id]) }}"
+                            class="btn btn-primary btn-sm">Editar</a>
+
+                        <button class="btn btn-danger btn-sm" wire:click="excluir({{ $ala->id }})"
+                            wire:confirm="Deseja excluir o quarto?">Excluir</button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 </div>
