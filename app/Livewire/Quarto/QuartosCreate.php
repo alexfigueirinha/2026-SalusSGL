@@ -3,6 +3,7 @@
 namespace App\Livewire\Quarto;
 
 use App\Models\Ala;
+use App\Models\Internacao;
 use App\Models\Leito;
 use App\Models\Quarto;
 use Livewire\Component;
@@ -29,8 +30,12 @@ class QuartosCreate extends Component
     return $this->hasMany(Leito::class); 
     }
 
-    public function ala() {
+    public function alas() {
     return $this->belongsTo(Ala::class); 
+    }
+
+    public function internacaos() {
+    return $this->hasMany(Internacao::class); 
     }
 
     public function render()

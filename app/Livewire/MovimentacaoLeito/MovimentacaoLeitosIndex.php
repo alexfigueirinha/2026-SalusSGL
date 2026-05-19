@@ -7,6 +7,18 @@ use Livewire\Component;
 
 class MovimentacaoLeitosIndex extends Component
 {
+    public $search = '';
+
+    public function delete($id)
+    {
+        $movimentacaoLeito = MovimentacaoLeito::find($id);
+
+        if ($movimentacaoLeito != null) {
+            $movimentacaoLeito->delete();
+            session()->flash('success', 'Excluído');
+        }
+    }
+
     public function render()
     {
 

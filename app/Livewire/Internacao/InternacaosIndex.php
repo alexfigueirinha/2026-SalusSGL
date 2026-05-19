@@ -7,6 +7,17 @@ use Livewire\Component;
 
 class InternacaosIndex extends Component
 {
+    public $search = '';
+
+    public function delete($id)
+    {
+        $internacao = Internacao::find($id);
+
+        if ($internacao != null) {
+            $internacao->delete();
+            session()->flash('success', 'Excluído');
+        }
+    }
     public function render()
     {
         $internacaos = Internacao::all();

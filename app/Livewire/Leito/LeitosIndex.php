@@ -7,6 +7,18 @@ use Livewire\Component;
 
 class LeitosIndex extends Component
 {
+    public $search = '';
+
+    public function delete($id)
+    {
+        $leito = Leito::find($id);
+
+        if ($leito != null) {
+            $leito->delete();
+            session()->flash('success', 'Excluído');
+        }
+    }
+
     public function render()
     {
 

@@ -1,10 +1,20 @@
-<div class  ="md-5">
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" airia-label="close"></button>
+<div class="mt-5">
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
         </div>
     @endif
+
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }} 
+        </div>
+    @endif
+
+    <div class="mb-3">
+        <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
+    </div>
+
 
     <div class="card">
         <div class="card-body">

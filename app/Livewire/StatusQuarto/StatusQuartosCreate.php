@@ -2,6 +2,7 @@
 
 namespace App\Livewire\StatusQuarto;
 
+use App\Models\Quarto;
 use App\Models\StatusQuarto;
 use Livewire\Component;
 
@@ -19,6 +20,10 @@ class StatusQuartosCreate extends Component
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('status.quarto.index');
+    }
+
+    public function quartos() {
+    return $this->belongsTo(Quarto::class); 
     }
 
     public function render()

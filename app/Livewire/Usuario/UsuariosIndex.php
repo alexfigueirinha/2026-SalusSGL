@@ -7,6 +7,18 @@ use Livewire\Component;
 
 class UsuariosIndex extends Component
 {
+    public $search = '';
+
+    public function delete($id)
+    {
+        $usuario = Usuario::find($id);
+
+        if ($usuario != null) {
+            $usuario->delete();
+            session()->flash('success', 'Excluído');
+        }
+    }
+
     public function render()
 
     {
