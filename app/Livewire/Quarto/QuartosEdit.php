@@ -16,15 +16,27 @@ class QuartosEdit extends Component
     {
         $quarto = Quarto::find($id);
 
+        if ($quarto == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('quarto.index');
+
+
         $this->quartoId = $quarto->id;
         $this->quarto = $quarto->quarto;
         $this->total_leitos = $quarto->total_leitos;
         $this->alas_id = $quarto->id;
     }
 
+}
+
     public function update()
     {
         $quarto = Quarto::find($this->quartoId);
+
+        if ($quarto == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('quarto.index');
+
 
         $this->quarto = $quarto->quarto;
         $this->total_leitos = $quarto->total_leitos;
@@ -35,6 +47,8 @@ class QuartosEdit extends Component
         session()->flash('success', 'Atualizado');
         return redirect()->route('quarto.index');
     }
+
+}  
 
     public function render()
     {

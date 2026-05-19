@@ -15,14 +15,25 @@ class StatusQuartosEdit extends Component
     {
         $statusQuarto = StatusQuarto::find($id);
 
+         if ($statusQuarto == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('statusQuarto.index');
+
+
         $this->statusQuartoId = $statusQuarto->id;
         $this->status = $statusQuarto->status;
         $this->quartos_id = $statusQuarto->quartos_id;
     }
 
+}
+
     public function update()
     {
         $statusQuarto = StatusQuarto::find($this->statusQuartoId);
+
+         if ($statusQuarto == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('statusQuarto.index');
 
         $this->status = $statusQuarto->status;
         $this->quartos_id = $statusQuarto->quartos_id;
@@ -32,6 +43,8 @@ class StatusQuartosEdit extends Component
         session()->flash('success', 'Atualizado');
         return redirect()->route('status.quarto.index');
     }
+
+}
 
     public function render()
     {

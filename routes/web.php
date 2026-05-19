@@ -15,6 +15,7 @@ use App\Livewire\StatusQuarto\StatusQuartosIndex;
 use App\Livewire\Ala\AlasCreate;
 use App\Livewire\Ala\AlasEdit;
 use App\Livewire\Ala\AlasIndex;
+use App\Livewire\Auth\Login;
 use App\Livewire\Leito\LeitosCreate;
 use App\Livewire\Leito\LeitosEdit;
 use App\Livewire\Leito\LeitosIndex;
@@ -64,3 +65,5 @@ Route::get('status/leito/edit/(id)', StatusLeitosEdit::class)->name('status.leit
 Route::get('usuario/create', UsuariosCreate::class)->name('usuario.create');
 Route::get('usuario/index', UsuariosIndex::class)->name('usuario.index');
 Route::get('usuario/edit/(id)', UsuariosEdit::class)->name('usuario.edit');
+
+Route::get('/login', Login::class)->name('login');

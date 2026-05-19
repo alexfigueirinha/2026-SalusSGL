@@ -16,6 +16,10 @@ class LeitosEdit extends Component
     public function mount($id){
         $leito = Leito::find($id);
 
+        if ($leito == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('leito.index');
+
         $this->nome_paciente = $leito->nome_paciente;
         $this->atualizacao = $leito->atualizacao;
         $this->quartos_id = $leito->quartos_id;
@@ -23,8 +27,13 @@ class LeitosEdit extends Component
         
     }
 
+}
     public function update(){
         $leito = Leito::find($this->leitoId);
+
+        if ($leito == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('leito.index');
 
         $leito->nome_paciente = $this->nome_paciente;
         $leito->atualizacao = $this->atualizacao;
@@ -36,6 +45,8 @@ class LeitosEdit extends Component
      session()->flash('success','Atualizado');
         return redirect()->route('leito.index');
     }
+
+}
     
     public function render()
     {

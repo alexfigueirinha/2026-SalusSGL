@@ -20,6 +20,11 @@ class PacientesEdit extends Component
     {
         $paciente = Paciente::find($id);
 
+        if ($paciente == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('paciente.index');
+
+
         $this->pacienteId = $paciente->id;
         $this->nome = $paciente->nome;
         $this->cpf = $paciente->cpf;
@@ -29,9 +34,16 @@ class PacientesEdit extends Component
         $this->data_entrada = $paciente->data_entrada;
     }
 
+    }
+
     public function update()
     {
         $paciente = Paciente::find($this->pacienteId);
+
+        if ($paciente == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('paciente.index');
+
 
         $this->nome = $paciente->nome;
         $this->cpf = $paciente->cpf;
@@ -45,6 +57,8 @@ class PacientesEdit extends Component
         session()->flash('success', 'Atualizado');
         return redirect()->route('paciente.index');
     }
+
+}
 
     public function render()
     {
