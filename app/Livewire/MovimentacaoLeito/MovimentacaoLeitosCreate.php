@@ -11,6 +11,7 @@ class MovimentacaoLeitosCreate extends Component
     public $quartos_id;
 
      public function store(){
+        
             MovimentacaoLeito::create([
             'quartos_id' => $this->quartos_id,
             'leitos_id' => $this->leitos_id,

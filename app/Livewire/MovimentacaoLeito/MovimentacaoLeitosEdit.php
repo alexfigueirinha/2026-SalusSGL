@@ -16,6 +16,10 @@ class MovimentacaoLeitosEdit extends Component
     public function mount($id){
         $movimentacaoLeito = MovimentacaoLeito::find($id);
 
+        if ($movimentacaoLeito == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('movimentacaoLeito.index');
+
         $this->quartos_id = $movimentacaoLeito->quartos_id;
         $this->leitos_id = $movimentacaoLeito->leitos_id;
         $this->usuarios_id = $movimentacaoLeito->usuarios_id;
@@ -23,8 +27,15 @@ class MovimentacaoLeitosEdit extends Component
         
         }
 
+    }
+
     public function update(){
         $movimentacaoLeito = MovimentacaoLeito::find($this->leitoId);
+
+        
+        if ($movimentacaoLeito == null) {
+            session()->flash('error', 'não encontrado');
+            return redirect()->route('movimentacaoLeito.index');
 
         $movimentacaoLeito->quartos_id = $this->quartos_id;
         $movimentacaoLeito->leitos_id = $this->leitos_id;
@@ -35,6 +46,8 @@ class MovimentacaoLeitosEdit extends Component
      session()->flash('success','Atualizado');
         return redirect()->route('movimentacao.leito.index');
     }
+
+}
 
     public function render()
     {
