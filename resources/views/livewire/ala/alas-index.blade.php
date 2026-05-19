@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
     <div class="b-example-divider"></div>
     <header class="p-3 mb-3 border-bottom">
@@ -41,6 +42,17 @@
             <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
         </div>
 
+=======
+<div class="mt-5">
+    @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
+
+    <div class="container">
+>>>>>>> origin/funcao_atualizada
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -62,9 +74,15 @@
                     <td>{{ $ala->descricao }}</td>
                     <td> {{ $ala->total_quartos }}
                     <td>{{ $ala->quartos_cadastrados }}</td>
+<<<<<<< HEAD
                     <td>{{ \Carbon\Carbon::parse($ala->data_criacao)->format('d/m/Y') }}</td>
                     <td>
                         <a href="{{ route('ala.edit', ['id' => $ala->id]) }}"
+=======
+                    <td>{{ \Carbon\Carbon::parse($ala->data_criacao)->format('d/m/Y H:i:s') }}</td>
+                    <td>
+                        <a href="{{ route('leito.edit', ['id' => $ala->id]) }}"
+>>>>>>> origin/funcao_atualizada
                             class="btn btn-primary btn-sm">Editar</a>
 
                         <button class="btn btn-danger btn-sm" wire:click="excluir({{ $ala->id }})"
@@ -75,6 +93,9 @@
             </tbody>
         </table>
     </div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/funcao_atualizada
 </div>

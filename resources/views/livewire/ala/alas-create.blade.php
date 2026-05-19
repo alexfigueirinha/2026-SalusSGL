@@ -1,4 +1,8 @@
 <div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/funcao_atualizada
     <div class="b-example-divider"></div>
     <header class="p-3 mb-3 border-bottom">
         <div class="container">
