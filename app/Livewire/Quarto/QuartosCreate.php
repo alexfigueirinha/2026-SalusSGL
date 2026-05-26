@@ -26,18 +26,6 @@ class QuartosCreate extends Component
         return redirect()->route('quarto.index');
     }
 
-    public function leitos() {
-    return $this->hasMany(Leito::class); 
-    }
-
-    public function alas() {
-    return $this->belongsTo(Ala::class); 
-    }
-
-    public function internacaos() {
-    return $this->hasMany(Internacao::class); 
-    }
-
     public function render()
     {
         $alas = Ala::all();

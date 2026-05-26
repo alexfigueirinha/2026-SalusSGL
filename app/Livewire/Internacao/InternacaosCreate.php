@@ -32,22 +32,6 @@ class InternacaosCreate extends Component
         return redirect()->route('internacao.index');
     }
 
-    public function quartos() {
-    return $this->belongsTo(Quarto::class); 
-    }
-
-    public function alas() {
-    return $this->belongsTo(Ala::class); 
-    }
-
-    public function leitos() {
-    return $this->belongsTo(Leito::class); 
-    }
-
-    public function pacientes() {
-    return $this->belongsTo(Paciente::class); 
-    }
-
     public function render()
     {
         return view('livewire.internacao.internacaos-create');

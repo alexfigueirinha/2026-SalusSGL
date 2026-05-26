@@ -17,13 +17,11 @@ class Ala extends Model
         'descricao'
     ];
 
-    public function quartos()
-    {
-        return $this->hasMany(Quarto::class);
+    public function quartos() {
+    return $this->hasMany(Quarto::class); 
     }
 
-    public function internacaos()
-    {
-        return $this->hasMany(Internacao::class);
+    public function internacaos() {
+    return $this->hasMany(Internacao::class); 
     }
 }

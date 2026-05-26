@@ -27,22 +27,6 @@ class LeitosCreate extends Component
         return redirect()->route('leito.index');
     }
 
-    public function quartos() {
-    return $this->belongsTo(Quarto::class); 
-    }
-    
-    public function statusLeitos() {
-    return $this->hasMany(StatusLeito::class); 
-    }
-
-    public function movimentacaoLeito() {
-    return $this->hasMany(MovimentacaoLeito::class); 
-    }
-
-    public function internacaos() {
-    return $this->hasMany(Internacao::class); 
-    }
-
     public function render()
     {
         $quartos = Quarto::all();

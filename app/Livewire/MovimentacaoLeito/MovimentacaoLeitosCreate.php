@@ -21,6 +21,7 @@ class MovimentacaoLeitosCreate extends Component
         session()->flash('success', 'Cadastrado');
         return redirect()->route('movimentacao.leito.index');
     }
+    
     public function render()
     {
         return view('livewire.movimentacao-leito.movimentacao-leitos-create');

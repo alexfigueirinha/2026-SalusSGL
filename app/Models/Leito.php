@@ -15,23 +15,19 @@ class Leito extends Model
         'quartos_id'
     ];
 
-    public function quartos()
-    {
-        return $this->belongsTo(Quarto::class);
+    public function quartos() {
+    return $this->belongsTo(Quarto::class); 
+    }
+    
+    public function statusLeitos() {
+    return $this->hasMany(StatusLeito::class); 
     }
 
-    public function internacaos()
-    {
-        return $this->hasMany(Internacao::class);
+    public function movimentacaoLeito() {
+    return $this->hasMany(MovimentacaoLeito::class); 
     }
 
-    public function statusLeitos()
-    {
-        return $this->hasMany(StatusLeito::class);
-    }
-
-    public function movimentacaoLeitos()
-    {
-        return $this->hasMany(MovimentacaoLeito::class);
+    public function internacaos() {
+    return $this->hasMany(Internacao::class); 
     }
 }

@@ -31,10 +31,6 @@ class PacientesCreate extends Component
         return redirect()->route('paciente.index');
     }
 
-    public function internacaos() {
-    return $this->hasMany(Internacao::class); 
-    }
-
     public function render()
     {
         $leitos = Leito::all();

@@ -21,11 +21,7 @@ class StatusQuartosCreate extends Component
         session()->flash('success', 'Cadastrado');
         return redirect()->route('status.quarto.index');
     }
-
-    public function quartos() {
-    return $this->belongsTo(Quarto::class); 
-    }
-
+    
     public function render()
     {
         return view('livewire.status-quarto.status-quartos-create');

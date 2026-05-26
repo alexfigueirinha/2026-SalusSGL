@@ -22,10 +22,6 @@ class StatusLeitosCreate extends Component
         return redirect()->route('status.leito.index');
     }
 
-    public function leitos() {
-    return $this->belongsTo(Leito::class); 
-    }
-
     public function render()
     {
         return view('livewire.status-leito.status-leitos-create');
