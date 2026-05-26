@@ -48,12 +48,11 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Paciente</th>
                         <th>Ala</th>
                         <th>Quarto</th>
                         <th>Leito</th>
-                        <th>Paciente</th>
                         <th>Data e Hora de Entrada</th>
-                        <th>Data e Hora de Saída<th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -62,10 +61,10 @@
                     @foreach ($internacaos as $internacao)
                         <tr>
                             <td>{{ $internacao->id }}</td>
+                            <td>{{ $internacao->pacientes->nome }}</td>
                             <td>{{ $internacao->alas_id }}</td>
                             <td>{{ $internacao->quartos_id }}</td>
-                            <td> {{ $internacao->leitos_id }}
-                            <td>{{ $internacao->pacientes_id }}</td>
+                            <td>{{ $internacao->leitos_id }}</td>
                             <td>{{ \Carbon\Carbon::parse($internacao->data_hora_entrada)->format('d/m/Y H:i:s') }}</td>
                             <td>
                                 <a href="{{ route('internacao.edit', ['id' => $internacao->id]) }}"

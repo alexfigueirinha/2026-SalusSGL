@@ -22,14 +22,14 @@ class AlasEdit extends Component
         if ($ala == null) {
             session()->flash('error', 'não encontrado');
             return redirect()->route('ala.index');
-
-            $this->alaId = $ala->id;
-            $this->nome = $ala->nome;
-            $this->total_quartos = $ala->data_hora;
-            $this->data_criacao = $ala->data_criacao;
-            $this->quartos_cadastrados = $ala->quartos_cadastrados;
-            $this->descricao = $ala->descricao;
         }
+        
+        $this->alaId = $ala->id;
+        $this->nome = $ala->nome;
+        $this->total_quartos = $ala->total_quartos;
+        $this->data_criacao = $ala->data_criacao;
+        $this->quartos_cadastrados = $ala->quartos_cadastrados;
+        $this->descricao = $ala->descricao;
     }
 
     public function update()
@@ -39,18 +39,18 @@ class AlasEdit extends Component
         if ($ala == null) {
             session()->flash('error', 'não encontrado');
             return redirect()->route('ala.index');
-
-            $ala->nome = $this->nome;
-            $ala->total_quartos = $this->total_quartos;
-            $ala->quartos_cadastrados = $this->quartos_cadastrados;
-            $ala->data_criacao = $this->data_criacao;
-            $ala->descricao = $this->descricao;
-
-            $ala->save();
-
-            session()->flash('success', 'Atualizado');
-            return redirect()->route('ala.index');
         }
+
+        $ala->nome = $this->nome;
+        $ala->total_quartos = $this->total_quartos;
+        $ala->quartos_cadastrados = $this->quartos_cadastrados;
+        $ala->data_criacao = $this->data_criacao;
+        $ala->descricao = $this->descricao;
+
+        $ala->save();
+
+        session()->flash('success', 'Atualizado');
+        return redirect()->route('ala.index');
     }
 
     public function render()
