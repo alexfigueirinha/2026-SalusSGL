@@ -12,6 +12,7 @@ class Quarto extends Model
     protected $fillable = [
         'quarto',
         'total_leitos',
+        'data_criacao',
         'alas_id'
     ];
 

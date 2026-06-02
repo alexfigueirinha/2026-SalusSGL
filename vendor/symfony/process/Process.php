@@ -1732,4 +1732,16 @@ class Process implements \IteratorAggregate
             throw new InvalidArgumentException(\sprintf('The environment block size (%d) exceeds the Windows limit of %d UTF-16 code units.', $blockLength, self::WINDOWS_ENV_BLOCK_MAX_LENGTH));
         }
     }
+
+    private function validateWindowsEnvBlockSize(array $envPairs): void
+    {
+        $block = implode("\0", $envPairs)."\0";
+        @preg_replace('/./u', '', $block, -1, $blockLength)
+            ?? preg_replace('/./', '', $block, -1, $blockLength);
+        $blockLength += 1 + preg_match_all('/[\xF0-\xF4][\x80-\xBF]{3}/', $block);
+
+        if ($blockLength > self::WINDOWS_ENV_BLOCK_MAX_LENGTH) {
+            throw new InvalidArgumentException(\sprintf('The environment block size (%d) exceeds the Windows limit of %d UTF-16 code units.', $blockLength, self::WINDOWS_ENV_BLOCK_MAX_LENGTH));
+        }
+    }
 }

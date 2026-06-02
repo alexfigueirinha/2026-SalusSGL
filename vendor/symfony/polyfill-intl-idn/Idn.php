@@ -361,8 +361,12 @@ final class Idn
                 // Step 4.2. Attempt to convert the rest of the label to Unicode according to Punycode [RFC3492]. If
                 // that conversion fails, record that there was an error, and continue
                 // with the next label. Otherwise replace the original label in the string by the results of the
+<<<<<<< HEAD
                 // conversion. Per UTS #46 revision 33, if the conversion succeeds but the result is empty or
                 // contains only ASCII code points, record that there was an error and continue with the next label.
+=======
+                // conversion.
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
                 try {
                     $label = self::punycodeDecode(substr($label, 4));
                 } catch (\Exception $e) {

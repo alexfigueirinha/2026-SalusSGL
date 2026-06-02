@@ -122,7 +122,11 @@ class Parser
 
     private function getState(): ParserState
     {
+<<<<<<< HEAD
         return $this->state ??= new ParserState();
+=======
+        return $this->state ?? $this->state = new ParserState();
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
     }
 
     private function doParse(string $value, int $flags): mixed
@@ -1047,7 +1051,11 @@ class Parser
             $value = $trimmedValue;
 
             // remove end of the document marker (...)
+<<<<<<< HEAD
             $value = preg_replace('#\.\.\.\s*+$#', '', $value);
+=======
+            $value = preg_replace('#\.\.\.[ \t]*+$#', '', $value);
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
         }
 
         return $value;

@@ -1,5 +1,8 @@
 <div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
     <div class="b-example-divider"></div>
     <header class="p-3 mb-3 border-bottom">
         <div class="container">
@@ -112,7 +115,22 @@
                                 </div>
                             </form>
                         </div>
+<<<<<<< HEAD
                     </div>
+=======
+                        <div class="form-floating">
+                            <textarea class="mb-2 form-control" wire:model="descricao" id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Descrição</label>
+                        </div>
+                        <div class="mb-2 form-floating">
+                            <input type="number" class="form-control" wire:model="total_quartos" id="totalQuartos"/>
+                            <label for="totalQuartos">Total de Quartos</label>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button class="btn btn-primary" type="submit">Salvar</button>
+                        </div>
+                    </form>
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
                 </div>
             </main>
         </div>

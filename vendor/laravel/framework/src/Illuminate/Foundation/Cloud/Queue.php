@@ -359,7 +359,11 @@ class Queue implements QueueContract, ClearableQueue
      * @param  string|null  $queue
      * @return string
      */
+<<<<<<< HEAD
     public function normalizeQueue($queue)
+=======
+    protected function normalizeQueue($queue)
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
     {
         $prefix = $this->config['connection']['prefix'] ?? null;
         $suffix = $this->config['connection']['suffix'] ?? null;

@@ -23,7 +23,6 @@ class LeitosIndex extends Component
     {
 
         $leitos = Leito::all();
-
         return view('livewire.leito.leitos-index', compact('leitos'));
     }
 }

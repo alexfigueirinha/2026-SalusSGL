@@ -182,6 +182,7 @@ class CurlMultiHandler
             \usleep(250);
         }
 
+<<<<<<< HEAD
         do {
             $this->executingMulti = true;
 
@@ -197,6 +198,12 @@ class CurlMultiHandler
                 \curl_multi_select($this->_mh, $this->selectTimeout);
             }
         } while ($exec === \CURLM_CALL_MULTI_PERFORM);
+=======
+        while (\curl_multi_exec($this->_mh, $this->active) === \CURLM_CALL_MULTI_PERFORM) {
+            // Prevent busy looping for slow HTTP requests.
+            \curl_multi_select($this->_mh, $this->selectTimeout);
+        }
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
         $this->processMessages();
     }
@@ -206,6 +213,7 @@ class CurlMultiHandler
      */
     private function tickInQueue(): void
     {
+<<<<<<< HEAD
         $this->executingMulti = true;
 
         try {
@@ -216,6 +224,9 @@ class CurlMultiHandler
         }
 
         if ($exec === \CURLM_CALL_MULTI_PERFORM) {
+=======
+        if (\curl_multi_exec($this->_mh, $this->active) === \CURLM_CALL_MULTI_PERFORM) {
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
             \curl_multi_select($this->_mh, 0);
             P\Utils::queue()->add(Closure::fromCallable([$this, 'tickInQueue']));
         }
@@ -269,6 +280,7 @@ class CurlMultiHandler
 
         $easy = $this->handles[$id]['easy'];
         unset($this->delays[$id], $this->handles[$id]);
+<<<<<<< HEAD
 
         if ($this->executingMulti) {
             $this->deferredCancels[$id] = $easy;
@@ -277,6 +289,13 @@ class CurlMultiHandler
         }
 
         $this->cleanupCancelledHandle($easy);
+=======
+        \curl_multi_remove_handle($this->_mh, $handle);
+
+        if (PHP_VERSION_ID < 80000) {
+            \curl_close($handle);
+        }
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
         return true;
     }

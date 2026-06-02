@@ -1694,7 +1694,10 @@ return array(
     'Illuminate\\Foundation\\Cloud' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Cloud.php',
     'Illuminate\\Foundation\\Cloud\\Events' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Cloud/Events.php',
     'Illuminate\\Foundation\\Cloud\\FailedJobProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Cloud/FailedJobProvider.php',
+<<<<<<< HEAD
     'Illuminate\\Foundation\\Cloud\\ManagedQueueNotFoundException' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Cloud/ManagedQueueNotFoundException.php',
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
     'Illuminate\\Foundation\\Cloud\\Queue' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Cloud/Queue.php',
     'Illuminate\\Foundation\\Cloud\\QueueConnector' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Cloud/QueueConnector.php',
     'Illuminate\\Foundation\\ComposerScripts' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/ComposerScripts.php',

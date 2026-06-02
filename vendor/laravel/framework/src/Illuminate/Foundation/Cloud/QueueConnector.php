@@ -2,17 +2,25 @@
 
 namespace Illuminate\Foundation\Cloud;
 
+<<<<<<< HEAD
 use Aws\CommandInterface;
 use Aws\Exception\AwsException;
 use Aws\Sqs\SqsClient;
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 use Illuminate\Foundation\Application;
 use Illuminate\Queue\Connectors\ConnectorInterface;
 use Illuminate\Queue\Events\JobQueued;
 use Illuminate\Queue\Events\WorkerStopping;
+<<<<<<< HEAD
 use Illuminate\Queue\SqsQueue;
 use Illuminate\Queue\Worker;
 use Illuminate\Queue\WorkerStopReason;
 use Psr\Http\Message\RequestInterface;
+=======
+use Illuminate\Queue\Worker;
+use Illuminate\Queue\WorkerStopReason;
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
 class QueueConnector implements ConnectorInterface
 {
@@ -36,18 +44,26 @@ class QueueConnector implements ConnectorInterface
      */
     public function connect(array $config): Queue
     {
+<<<<<<< HEAD
         $underlying = $this->connector->connect($config['connection']);
 
         $queue = new Queue(
             $underlying,
+=======
+        $queue = new Queue(
+            $this->connector->connect($config['connection']),
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
             $this->app[Events::class],
             $config,
         );
 
+<<<<<<< HEAD
         if ($underlying instanceof SqsQueue) {
             $this->registerErrorHandling($underlying->getSqs(), $queue);
         }
 
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
         $this->configureQueue($queue);
 
         if (! $this->app->runningConsoleCommand('queue:work')) {
@@ -61,6 +77,7 @@ class QueueConnector implements ConnectorInterface
     }
 
     /**
+<<<<<<< HEAD
      * Register SQS client middleware that translates "queue does not exist" errors into ManagedQueueNotFoundExceptions.
      */
     protected function registerErrorHandling(SqsClient $sqs, Queue $queue): void
@@ -84,6 +101,8 @@ class QueueConnector implements ConnectorInterface
     }
 
     /**
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
      * Configure the queue.
      */
     protected function configureQueue(Queue $queue): void

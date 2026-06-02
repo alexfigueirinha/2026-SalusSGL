@@ -218,7 +218,16 @@ class StreamHandler
                     // drop the now-unknown Content-Length header.
                     if (isset($normalizedKeys['content-length'])) {
                         $headers['x-encoded-content-length'] = $headers[$normalizedKeys['content-length']];
+<<<<<<< HEAD
                         unset($headers[$normalizedKeys['content-length']]);
+=======
+                        $length = (int) $stream->getSize();
+                        if ($length === 0) {
+                            unset($headers[$normalizedKeys['content-length']]);
+                        } else {
+                            $headers[$normalizedKeys['content-length']] = [(string) $length];
+                        }
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
                     }
                 }
             }

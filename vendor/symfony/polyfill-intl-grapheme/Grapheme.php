@@ -11,7 +11,11 @@
 
 namespace Symfony\Polyfill\Intl\Grapheme;
 
+<<<<<<< HEAD
 \define('SYMFONY_GRAPHEME_CLUSTER_RX', ((float) \PCRE_VERSION >= 10.44) ? '\X' : Grapheme::GRAPHEME_CLUSTER_RX);
+=======
+\define('SYMFONY_GRAPHEME_CLUSTER_RX', ((float) \PCRE_VERSION < 10 ? (float) \PCRE_VERSION >= 8.32 : (float) \PCRE_VERSION >= 10.44) ? '\X' : Grapheme::GRAPHEME_CLUSTER_RX);
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
 /**
  * Partial intl implementation in pure PHP.

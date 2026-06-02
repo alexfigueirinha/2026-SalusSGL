@@ -102,6 +102,7 @@
             <tbody>
                 @foreach ($internacaos as $internacao)
                     <tr>
+<<<<<<< HEAD
                         <td>{{ $internacao->id }}</td>
                         <td>{{ $internacao->alas_id }}</td>
                         <td>{{ $internacao->quartos_id }}</td>
@@ -119,5 +120,39 @@
                 @endforeach
             </tbody>
         </table>
+=======
+                        <th>#</th>
+                        <th>Paciente</th>
+                        <th>Ala</th>
+                        <th>Quarto</th>
+                        <th>Leito</th>
+                        <th>Data e Hora de Entrada</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach ($internacaos as $internacao)
+                        <tr>
+                            <td>{{ $internacao->id }}</td>
+                            <td>{{ $internacao->pacientes->nome }}</td>
+                            <td>{{ $internacao->alas_id }}</td>
+                            <td>{{ $internacao->quartos_id }}</td>
+                            <td>{{ $internacao->leitos_id }}</td>
+                            <td>{{ \Carbon\Carbon::parse($internacao->data_hora_entrada)->format('d/m/Y H:i:s') }}</td>
+                            <td>
+                                <a href="{{ route('internacao.edit', ['id' => $internacao->id]) }}"
+                                    class="btn btn-primary btn-sm">Editar</a>
+
+                                <button class="btn btn-danger btn-sm"
+                                    wire:click="excluir({{ $internacao->id }})"
+                                    wire:confirm="Deseja excluir o quarto?">Excluir</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
     </div>
 </div>

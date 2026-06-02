@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<<<<<<< HEAD
 ## 2.10.4 - 2026-05-29
 
 ### Fixed
@@ -22,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed URI parsing for IPv6 literals containing embedded IPv4 addresses
 - Fixed malformed UTF-8 URI strings being parsed as empty URIs
 
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 ## 2.10.2 - 2026-05-25
 
 ### Security

@@ -217,7 +217,11 @@ class IpUtils
             $ip = substr($ip, 1, -1);
         }
 
+<<<<<<< HEAD
         $mappedIpV4MaskGenerator = static function (string $mask, int $bytesToAnonymize) {
+=======
+        $mappedIpV4MaskGenerator = function (string $mask, int $bytesToAnonymize) {
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
             $mask .= str_repeat('ff', 4 - $bytesToAnonymize);
             $mask .= str_repeat('00', $bytesToAnonymize);
 
