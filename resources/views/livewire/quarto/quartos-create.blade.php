@@ -85,11 +85,7 @@
                         <select class="mb-2 form-select" wire:model="alas_id" aria-label="Default select example">
                             <option selected>Selecione a ala</option>
                             @foreach ($alas as $ala)
-<<<<<<< HEAD
-                            <option>{{$ala->id }} {{ $ala->nome }}</option>
-=======
                             <option>{{ $ala->nome }}</option>
->>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
                             @endforeach
                         </select>
                         <div class="mb-2 form-floating">
