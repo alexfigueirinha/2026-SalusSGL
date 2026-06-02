@@ -2,10 +2,7 @@
 
 namespace Livewire\Features\SupportReleaseTokens;
 
-<<<<<<< HEAD
 use Livewire\Exceptions\ComponentNotFoundException;
-=======
->>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 use Livewire\Exceptions\LivewireReleaseTokenMismatchException;
 use Livewire\Mechanisms\ComponentRegistry;
 
@@ -17,15 +14,11 @@ class ReleaseToken {
 
     static function verify($snapshot): void
     {
-<<<<<<< HEAD
         try {
             $componentClass = app(ComponentRegistry::class)->getClass($snapshot['memo']['name']);
         } catch (ComponentNotFoundException) {
             throw new LivewireReleaseTokenMismatchException;
         }
-=======
-        $componentClass = app(ComponentRegistry::class)->getClass($snapshot['memo']['name']);
->>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
         if (!isset($snapshot['memo']['release']) || $snapshot['memo']['release'] !== static::generate($componentClass)) {
             throw new LivewireReleaseTokenMismatchException;
@@ -40,8 +33,4 @@ class ReleaseToken {
 
         return $livewireReleaseToken . '-' . $appReleaseToken . '-' . $componentReleaseToken;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
