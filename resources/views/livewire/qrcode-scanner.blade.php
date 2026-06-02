@@ -1,5 +1,5 @@
 <div>
-   {{-- <div>
+    <div>
     <!-- Escaneamento de QR Code -->
     <div class="mb-6">
         <h2 class="text-xl font-semibold mb-2">Escaneamento de QR Code</h2>
@@ -57,5 +57,6 @@
             @endforeach
         </div>
     </div>
-</div> --}}
+</div>
+
 </div>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Livewire\QrcodeScanner;
 use App\Livewire\Internacao\InternacaosCreate;
 use App\Livewire\Internacao\InternacaosEdit;
 use App\Livewire\Internacao\InternacaosIndex;
@@ -24,6 +23,7 @@ use App\Livewire\Leito\LeitosIndex;
 use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosCreate;
 use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosEdit;
 use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosIndex;
+use App\Livewire\QrcodeScanner;
 use App\Livewire\StatusLeito\StatusLeitosCreate;
 use App\Livewire\StatusLeito\StatusLeitosEdit;
 use App\Livewire\StatusLeito\StatusLeitosIndex;
