@@ -17,7 +17,7 @@
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle" />
                     </a>
                     <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="">Sair</a></li>
+                        <li><a class="dropdown-item" href="login">Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <form class="card p-4 shadow align-content-center">
+                    <form class="card p-4 shadow align-content-center" wire:submit.prevent='store'>
                         <h3 class="d-flex align-items-center">
                             <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" width="35" height="35">
                                 <path
@@ -43,17 +43,17 @@
                         <select class="mb-2 form-select" wire:model="quartos_id" aria-label="Default select example">
                             <option selected>Selecione o quarto</option>
                             @foreach ($quartos as $quarto)
-                            <option>{{ $quarto->id }} {{ $quarto->nome }}</option>
+                            <option>{{ $quarto->quarto }}</option>
                             @endforeach
                         </select>
                         <select class="mb-2 form-select" wire:model="atualizacao" aria-label="Default select example">
                             <option selected>Selecione o status inicial</option>
-                            <option value="1">Disponível</option>
-                            <option value="2">Ocupado</option>
-                            <option value="3">Reservado</option>
-                            <option value="4">Emergência</option>
-                            <option value="5">Manutenção</option>
-                            <option value="6">Em Limpeza</option>
+                            <option value="disponivel">Disponível</option>
+                            <option value="ocupado">Ocupado</option>
+                            <option value="reservado">Reservado</option>
+                            <option value="emergencia">Emergência</option>
+                            <option value="manutencao">Manutenção</option>
+                            <option value="em_limpeza">Em Limpeza</option>
                         </select>
                         <div class="d-flex justify-content-end gap-2 mt-3">
                             <button type="button" class="btn btn-outline-primary">Cancelar</button>

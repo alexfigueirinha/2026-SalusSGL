@@ -42,15 +42,11 @@
                             <label for="floatingTextarea">Descrição</label>
                         </div>
                         <div class="mb-2 form-floating">
-                            <input type="number" class="form-control" wire:model="total_quartos" id="totalQuartos"
-                                value="0" min="0" />
+                            <input type="number" class="form-control" wire:model="total_quartos" id="totalQuartos"/>
                             <label for="totalQuartos">Total de Quartos</label>
                         </div>
                         <div class="d-flex justify-content-end gap-2 mt-3">
-                            <button type="button" class="btn btn-outline-primary">Cancelar</button>
-                            <button class="btn btn-primary" type="submit">
-                                Criar
-                            </button>
+                            <button class="btn btn-primary" type="submit">Salvar</button>
                         </div>
                     </form>
                 </div>

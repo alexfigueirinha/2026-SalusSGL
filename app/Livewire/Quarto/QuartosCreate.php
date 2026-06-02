@@ -12,6 +12,8 @@ class QuartosCreate extends Component
 {
     public $quarto;
     public $total_leitos;
+    public $data_criacao;
+    public $leitos_cadastrados;
     public $alas_id;
 
     public function store()
@@ -19,6 +21,7 @@ class QuartosCreate extends Component
         Quarto::create([
             'quarto' => $this->quarto,
             'total_leitos' => $this->total_leitos,
+            'data_criacao' => $this->data_criacao,
             'alas_id' => $this->alas_id
         ]);
 

@@ -18,19 +18,23 @@ class Internacao extends Model
         'quartos_id'
     ];
 
-    public function quartos() {
-    return $this->belongsTo(Quarto::class); 
+    public function quartos()
+    {
+        return $this->belongsTo(Quarto::class);
     }
 
-    public function alas() {
-    return $this->belongsTo(Ala::class); 
+    public function alas()
+    {
+        return $this->belongsTo(Ala::class);
     }
 
-    public function leitos() {
-    return $this->belongsTo(Leito::class); 
+    public function leitos()
+    {
+        return $this->belongsTo(Leito::class);
     }
 
-    public function pacientes() {
-    return $this->belongsTo(Paciente::class); 
+    public function pacientes()
+    {
+        return $this->belongsTo(Paciente::class);
     }
 }

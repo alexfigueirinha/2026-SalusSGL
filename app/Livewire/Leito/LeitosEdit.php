@@ -3,53 +3,55 @@
 namespace App\Livewire\Leito;
 
 use App\Models\Leito;
+use App\Models\Quarto;
 use Livewire\Component;
 
 class LeitosEdit extends Component
 {
 
-    public $nome_paciente;
     public $atualizacao;
+    public $data_criacao;
     public $quartos_id;
     public $leitoId;
 
-    public function mount($id){
+    public function mount($id)
+    {
         $leito = Leito::find($id);
 
         if ($leito == null) {
             session()->flash('error', 'não encontrado');
             return redirect()->route('leito.index');
+        }
 
-        $this->nome_paciente = $leito->nome_paciente;
         $this->atualizacao = $leito->atualizacao;
         $this->quartos_id = $leito->quartos_id;
+        $this->data_criacao = $leito->data_criacao;
         $this->leitoId = $leito->id;
-        
     }
 
-}
-    public function update(){
+    public function update()
+    {
         $leito = Leito::find($this->leitoId);
 
         if ($leito == null) {
             session()->flash('error', 'não encontrado');
             return redirect()->route('leito.index');
+        }
 
-        $leito->nome_paciente = $this->nome_paciente;
         $leito->atualizacao = $this->atualizacao;
+        $leito->data_criacao = $this->data_criacao;
         $leito->quartos_id = $this->quartos_id;
-        
+
 
         $leito->save();
 
-     session()->flash('success','Atualizado');
+        session()->flash('success', 'Atualizado');
         return redirect()->route('leito.index');
     }
 
-}
-    
     public function render()
     {
-        return view('livewire.leito.leitos-edit');
+        $quartos = Quarto::all();
+        return view('livewire.leito.leitos-edit', compact('quartos'));
     }
 }

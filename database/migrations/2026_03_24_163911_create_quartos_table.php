@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('quarto');
             $table->unsignedBigInteger('alas_id');
             $table->integer('total_leitos');
+            $table->integer('leitos_cadastrados')->nullable(true);
+            $table->date('data_criacao')->nullable(true);
             $table->foreign('alas_id')->references('id')->on('alas');
         });
     }

@@ -12,6 +12,7 @@ class Leito extends Model
     protected $fillable = [
         'leito',
         'atualizacao',
+        'data_criacao',
         'quartos_id'
     ];
 

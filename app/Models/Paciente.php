@@ -15,7 +15,6 @@ class Paciente extends Model
         'data_nascimento',
         'telefone',
         'leito_atual',
-        'data_entrada'
     ];
 
     public function internacaos()
