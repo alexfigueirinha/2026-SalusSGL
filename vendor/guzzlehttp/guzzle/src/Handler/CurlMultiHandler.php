@@ -58,6 +58,16 @@ class CurlMultiHandler
     private $_mh;
 
     /**
+     * @var bool
+     */
+    private $executingMulti = false;
+
+    /**
+     * @var array<int, EasyHandle>
+     */
+    private $deferredCancels = [];
+
+    /**
      * This handler accepts the following options:
      *
      * - handle_factory: An optional factory  used to create curl handles
@@ -172,10 +182,28 @@ class CurlMultiHandler
             \usleep(250);
         }
 
+<<<<<<< HEAD
+        do {
+            $this->executingMulti = true;
+
+            try {
+                $exec = \curl_multi_exec($this->_mh, $this->active);
+            } finally {
+                $this->executingMulti = false;
+                $this->cleanupDeferredCancels();
+            }
+
+            // Prevent busy looping for slow HTTP requests.
+            if ($exec === \CURLM_CALL_MULTI_PERFORM) {
+                \curl_multi_select($this->_mh, $this->selectTimeout);
+            }
+        } while ($exec === \CURLM_CALL_MULTI_PERFORM);
+=======
         while (\curl_multi_exec($this->_mh, $this->active) === \CURLM_CALL_MULTI_PERFORM) {
             // Prevent busy looping for slow HTTP requests.
             \curl_multi_select($this->_mh, $this->selectTimeout);
         }
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
         $this->processMessages();
     }
@@ -185,7 +213,20 @@ class CurlMultiHandler
      */
     private function tickInQueue(): void
     {
+<<<<<<< HEAD
+        $this->executingMulti = true;
+
+        try {
+            $exec = \curl_multi_exec($this->_mh, $this->active);
+        } finally {
+            $this->executingMulti = false;
+            $this->cleanupDeferredCancels();
+        }
+
+        if ($exec === \CURLM_CALL_MULTI_PERFORM) {
+=======
         if (\curl_multi_exec($this->_mh, $this->active) === \CURLM_CALL_MULTI_PERFORM) {
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
             \curl_multi_select($this->_mh, 0);
             P\Utils::queue()->add(Closure::fromCallable([$this, 'tickInQueue']));
         }
@@ -237,15 +278,50 @@ class CurlMultiHandler
             return false;
         }
 
-        $handle = $this->handles[$id]['easy']->handle;
+        $easy = $this->handles[$id]['easy'];
         unset($this->delays[$id], $this->handles[$id]);
+<<<<<<< HEAD
+
+        if ($this->executingMulti) {
+            $this->deferredCancels[$id] = $easy;
+
+            return true;
+        }
+
+        $this->cleanupCancelledHandle($easy);
+=======
         \curl_multi_remove_handle($this->_mh, $handle);
 
         if (PHP_VERSION_ID < 80000) {
             \curl_close($handle);
         }
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
         return true;
+    }
+
+    private function cleanupDeferredCancels(): void
+    {
+        if ($this->deferredCancels === []) {
+            return;
+        }
+
+        $entries = $this->deferredCancels;
+        $this->deferredCancels = [];
+
+        foreach ($entries as $easy) {
+            $this->cleanupCancelledHandle($easy);
+        }
+    }
+
+    private function cleanupCancelledHandle(EasyHandle $easy): void
+    {
+        $handle = $easy->handle;
+        \curl_multi_remove_handle($this->_mh, $handle);
+
+        if (PHP_VERSION_ID < 80000) {
+            \curl_close($handle);
+        }
     }
 
     private function processMessages(): void
@@ -272,9 +348,16 @@ class CurlMultiHandler
             $entry = $this->handles[$id];
             unset($this->handles[$id], $this->delays[$id]);
             $entry['easy']->errno = $done['result'];
-            $entry['deferred']->resolve(
-                CurlFactory::finish($this, $entry['easy'], $this->factory)
-            );
+
+            try {
+                $result = CurlFactory::finish($this, $entry['easy'], $this->factory);
+            } catch (\Throwable $e) {
+                $entry['deferred']->reject($e);
+
+                continue;
+            }
+
+            $entry['deferred']->resolve($result);
         }
     }
 

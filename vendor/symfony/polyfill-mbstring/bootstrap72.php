@@ -9,13 +9,8 @@
  * file that was distributed with this source code.
  */
 
-if (\PHP_VERSION_ID >= 80000) {
-    return require __DIR__.'/bootstrap80.php';
-}
+use Symfony\Polyfill\Mbstring as p;
 
-<<<<<<< HEAD
-return require __DIR__.'/bootstrap72.php';
-=======
 if (!function_exists('mb_convert_encoding')) {
     function mb_convert_encoding($string, $to_encoding, $from_encoding = null) { return p\Mbstring::mb_convert_encoding($string, $to_encoding, $from_encoding); }
 }
@@ -176,4 +171,3 @@ if (!defined('MB_CASE_LOWER')) {
 if (!defined('MB_CASE_TITLE')) {
     define('MB_CASE_TITLE', 2);
 }
->>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25

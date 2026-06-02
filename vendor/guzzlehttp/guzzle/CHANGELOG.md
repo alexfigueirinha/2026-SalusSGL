@@ -3,7 +3,28 @@
 Please refer to [UPGRADING](UPGRADING.md) guide for upgrading to a major version.
 
 
+<<<<<<< HEAD
+## 7.10.6 - 2026-06-01
+
+### Fixed
+
+- `CurlMultiHandler` now rejects the promise when `CurlFactory::finish()` throws, preserving sibling transfers
+- `SetCookie` now normalizes unparseable `Expires` values to `null` instead of `false`
+- Fix stream handler decoded `gzip`/`deflate` truncation by dropping invalid `Content-Length`
+
+
+## 7.10.5 - 2026-05-27
+
+### Fixed
+
+- Defer cURL multi cancellation cleanup until after progress callbacks return
+- Classify additional stream handler connection failures as `ConnectException`
+
+
+## 7.10.4 - 2026-05-22
+=======
 ## 7.10.4 - 2025-05-22
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
 ### Fixed
 
@@ -12,7 +33,11 @@ Please refer to [UPGRADING](UPGRADING.md) guide for upgrading to a major version
 - Fix magic client request methods such as `options()` to uppercase inferred HTTP methods
 
 
+<<<<<<< HEAD
+## 7.10.3 - 2026-05-20
+=======
 ## 7.10.3 - 2025-05-20
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 
 ### Fixed
 

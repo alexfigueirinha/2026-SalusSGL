@@ -119,6 +119,15 @@ class SMimePart extends AbstractPart
 
     public function __unserialize(array $data): void
     {
+<<<<<<< HEAD
+        foreach (['body', 'type', 'subtype'] as $prop) {
+            if (($data[$prop] ?? $data["\0".self::class."\0".$prop] ?? $data["\0*\0".$prop] ?? null) instanceof \Stringable) {
+                throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
+            }
+        }
+
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
         if ($wakeup = self::class !== (new \ReflectionMethod($this, '__wakeup'))->class && self::class === (new \ReflectionMethod($this, '__unserialize'))->class) {
             trigger_deprecation('symfony/mime', '7.4', 'Implementing "%s::__wakeup()" is deprecated, use "__unserialize()" instead.', get_debug_type($this));
         }

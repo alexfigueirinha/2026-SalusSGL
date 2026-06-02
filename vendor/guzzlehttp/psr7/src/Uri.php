@@ -99,15 +99,21 @@ class Uri implements UriInterface, \JsonSerializable
             return self::parsePathNoSchemeReference($url);
         }
 
+<<<<<<< HEAD
+        // Preserve bracketed IPv6 literals before encoding, including dotted IPv4 tails.
+        $prefix = '';
+        if (preg_match('%^([0-9A-Za-z+.-]+://\[[0-9:.a-fA-F]+\])(.*?)$%', $url, $matches)) {
+=======
         // If IPv6
         $prefix = '';
         if (preg_match('%^(.*://\[[0-9:a-fA-F]+\])(.*?)$%', $url, $matches)) {
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
             /** @var array{0:string, 1:string, 2:string} $matches */
             $prefix = $matches[1];
             $url = $matches[2];
         }
 
-        /** @var string */
+        /** @var string|null */
         $encodedUrl = preg_replace_callback(
             '%[^:/@?&=#]+%usD',
             static function ($matches) {
@@ -115,6 +121,10 @@ class Uri implements UriInterface, \JsonSerializable
             },
             $url
         );
+
+        if ($encodedUrl === null) {
+            return false;
+        }
 
         $result = parse_url($prefix.$encodedUrl);
 

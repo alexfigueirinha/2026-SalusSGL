@@ -29,8 +29,13 @@ class IpUtils
         '::1/128',        // Loopback
         'fc00::/7',       // Unique Local Address
         'fe80::/10',      // Link Local Address
-        '::ffff:0:0/96',  // IPv4 translations
+        '::ffff:0:0/96',  // IPv4-mapped IPv6 addresses (RFC 4291 section 2.5.5.2)
         '::/128',         // Unspecified address
+        '::/96',          // IPv4-compatible IPv6 addresses (RFC 4291 section 2.5.5.1)
+        '2002::/16',      // 6to4 (RFC 3056)
+        '2001::/32',      // Teredo tunneling (RFC 4380)
+        '64:ff9b::/96',   // NAT64 well-known prefix (RFC 6052)
+        '64:ff9b:1::/48', // NAT64 local-use prefix (RFC 8215)
     ];
 
     private static array $checkedIps = [];
@@ -212,7 +217,11 @@ class IpUtils
             $ip = substr($ip, 1, -1);
         }
 
+<<<<<<< HEAD
+        $mappedIpV4MaskGenerator = static function (string $mask, int $bytesToAnonymize) {
+=======
         $mappedIpV4MaskGenerator = function (string $mask, int $bytesToAnonymize) {
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
             $mask .= str_repeat('ff', 4 - $bytesToAnonymize);
             $mask .= str_repeat('00', $bytesToAnonymize);
 

@@ -2246,6 +2246,10 @@ class ComposerStaticInit93fcba06050b7b5aade95ead198c3e86
         'Illuminate\\Foundation\\Cloud' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Cloud.php',
         'Illuminate\\Foundation\\Cloud\\Events' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Cloud/Events.php',
         'Illuminate\\Foundation\\Cloud\\FailedJobProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Cloud/FailedJobProvider.php',
+<<<<<<< HEAD
+        'Illuminate\\Foundation\\Cloud\\ManagedQueueNotFoundException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Cloud/ManagedQueueNotFoundException.php',
+=======
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
         'Illuminate\\Foundation\\Cloud\\Queue' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Cloud/Queue.php',
         'Illuminate\\Foundation\\Cloud\\QueueConnector' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Cloud/QueueConnector.php',
         'Illuminate\\Foundation\\ComposerScripts' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/ComposerScripts.php',
@@ -2355,6 +2359,7 @@ class ComposerStaticInit93fcba06050b7b5aade95ead198c3e86
         'Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php',
         'Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php',
         'Illuminate\\Foundation\\Inspiring' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Inspiring.php',
+        'Illuminate\\Foundation\\LaravelCloudJsonFormatter' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/LaravelCloudJsonFormatter.php',
         'Illuminate\\Foundation\\MaintenanceModeManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/MaintenanceModeManager.php',
         'Illuminate\\Foundation\\Mix' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Mix.php',
         'Illuminate\\Foundation\\MixFileNotFoundException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/MixFileNotFoundException.php',

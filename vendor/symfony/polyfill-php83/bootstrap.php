@@ -31,15 +31,29 @@ if (!function_exists('str_decrement')) {
     function str_decrement(string $string): string { return p\Php83::str_decrement($string); }
 }
 
+<<<<<<< HEAD
+if (\PHP_VERSION_ID < 80000) {
+    require __DIR__.'/bootstrap72.php';
+=======
 if (\PHP_VERSION_ID >= 80000) {
     return require __DIR__.'/bootstrap80.php';
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 }
 
 if (extension_loaded('mbstring')) {
     if (!function_exists('mb_str_pad')) {
+<<<<<<< HEAD
+        function mb_str_pad(?string $string, ?int $length, ?string $pad_string = ' ', ?int $pad_type = STR_PAD_RIGHT, ?string $encoding = null): string { return p\Php83::mb_str_pad((string) $string, (int) $length, (string) $pad_string, (int) $pad_type, $encoding); }
+    }
+}
+
+if (\PHP_VERSION_ID >= 80100) {
+    return require __DIR__.'/bootstrap81.php';
+=======
         /** @return string|false */
         function mb_str_pad(?string $string, ?int $length, ?string $pad_string = ' ', ?int $pad_type = STR_PAD_RIGHT, ?string $encoding = null) { return p\Php83::mb_str_pad((string) $string, (int) $length, (string) $pad_string, (int) $pad_type, $encoding); }
     }
+>>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
 }
 
 if (!function_exists('ldap_exop_sync') && function_exists('ldap_exop')) {
