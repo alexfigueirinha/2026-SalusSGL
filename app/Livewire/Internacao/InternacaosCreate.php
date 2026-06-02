@@ -34,6 +34,10 @@ class InternacaosCreate extends Component
 
     public function render()
     {
-        return view('livewire.internacao.internacaos-create');
+        $alas = Ala::all();
+        $quartos = Quarto::all();
+        $leitos = Leito::all();
+        $pacientes = Paciente::all();
+        return view('livewire.internacao.internacaos-create', compact('alas', 'quartos', 'leitos', 'pacientes'));
     }
 }

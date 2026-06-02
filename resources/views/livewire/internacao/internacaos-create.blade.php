@@ -69,38 +69,51 @@
                 </ul>
             </div>
 
-    <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <form class="card p-4 shadow align-content-center" wire:submit.prevent="store">
-                        <h3 class="d-flex align-items-center">
-                            <i class="bi bi-door-open me-1 fs-3"></i>
-                            Novo Quarto
-                        </h3>
-                        <div class="mb-2 form-floating">
-                            <input type="name" class="form-control" wire:model="" id="floatingInput" />
-                            <label for="floatingInput">Número do Quarto</label>
-                        </div>
-                        <select class="mb-2 form-select" aria-label="Default select example">
-                            <option selected>Selecione a Ala</option>
-                            <option value="1">Ala 1</option>
-                            <option value="2">Ala 2</option>
-                            <option value="3">Ala 3</option>
-                        </select>
-                        <div class="mb-2 form-floating">
-                            <input type="number" class="form-control" id="totalQuartos" value="0" min="0" />
-                            <label for="totalQuartos">Total de Leitos</label>
-                        </div>
-                        <div class="d-flex justify-content-end gap-2 mt-3">
-                            <button type="button" class="btn btn-outline-primary">Cancelar</button>
-                            <button class="btn btn-primary" type="submit">
-                                Criar
-                            </button>
-                        </div>
-                    </form>
+            <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mt-4">Internações</h2>
                 </div>
-            </div>
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <form class="card p-4 shadow align-content-center" wire:submit.prevent="store">
+                                <h3 class="d-flex align-items-center">
+                                    <i class="bi bi-door-open me-1 fs-3"></i>
+                                    Registrar Internação
+                                </h3>
+                                <select class="mb-2 form-select" aria-label="Default select example">
+                                    <option selected>Selecione o paciente</option>
+                                    @foreach ($pacientes as $paciente)
+                                        <option>{{ $paciente->nome }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="mb-2 form-select" aria-label="Default select example">
+                                    <option selected>Selecione a ala</option>
+                                    @foreach ($alas as $ala)
+                                        <option>{{ $ala->nome }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="mb-2 form-select" aria-label="Default select example">
+                                    <option selected>Selecione o quarto</option>
+                                    @foreach ($quartos as $quarto)
+                                        <option>{{ $quarto->quarto }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="mb-2 form-select" aria-label="Default select example">
+                                    <option selected>Selecione o leito</option>
+                                    @foreach ($leitos as $leito)
+                                        <option>{{ $leito->leito }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="d-flex justify-content-end gap-2 mt-3">
+                                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                                    <button class="btn btn-primary" type="submit">
+                                        Criar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-    </main>
-</div>
