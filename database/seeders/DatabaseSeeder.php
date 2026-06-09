@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Usuario;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -21,5 +22,13 @@ class DatabaseSeeder extends Seeder
             LeitoSeeder::class,
             InternacaoSeeder::class
         ]);
+
+        Usuario::create([
+            'name' => 'Admin',
+            'email' => 'admin@senai.com',
+            'password' => Hash::make('123')
+        ]);
+        
     }
+    
 }
