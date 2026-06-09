@@ -12,9 +12,11 @@ class UsuariosEdit extends Component
     public $email;
     public $tipo;
     public $status;
+    public $senha;
     public $telefone;
     public $status_usuario;
     public $data_cadastro;
+    public $usuarioId;
 
     public function mount($id){
         $usuario = Usuario::find($id);
@@ -23,6 +25,7 @@ class UsuariosEdit extends Component
         $this->email = $usuario->email;
         $this->tipo = $usuario->tipo;
         $this->status = $usuario->status;
+        $this->senha = $usuario->senha;
         $this->telefone = $usuario->telefone;
         $this->status_usuario = $usuario->status_usuario;
         $this->data_cadastro = $usuario->data_cadastro;
@@ -36,6 +39,7 @@ class UsuariosEdit extends Component
         $usuario->email = $this->email;
         $usuario->tipo = $this->tipo;
         $usuario->status = $this->status;
+        $usuario->senha = $this->senha;
         $usuario->telefone = $this->telefone;
         $usuario->status_usuario = $this->status_usuario;
         $usuario->data_cadastro = $this->data_cadastro;

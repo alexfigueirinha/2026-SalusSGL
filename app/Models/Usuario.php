@@ -15,6 +15,7 @@ class Usuario extends Model
         'tipo',
         'telefone',
         'status',
+        'senha',
         'data_cadastro',
     ];
 

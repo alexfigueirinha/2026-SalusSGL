@@ -16,8 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->string('email')->unique;
-            $table->string('tipo');
-            $table->enum('status', ['ativo', 'inativo'])->nullable(false)->default('ativo');
+            $table->enum('tipo', ['recepcionista', 'enfermeiro', 'auxiliar_enfermagem', 'higienizacao', 'gestor', 'manutencao', 'medico'])->nullable(false);
+            $table->enum('status', ['ativo', 'inativo'])->nullable(false);
+            $table->string('senha')->nullable(false);
             $table->bigInteger('telefone');
             $table->datetime('data_cadastro')->nullable(true);
         });

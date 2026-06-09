@@ -49,9 +49,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -68,4 +68,57 @@
                     </li>
                 </ul>
             </div>
-</div>
+
+            <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <form class="card p-4 shadow align-content-center" wire:submit.prevent="update">
+                                <img src="./img/1000_F_339565997_c6qql4K23R6pgWrrxGHPgajx82kKudXN.jpg"
+                                    class="mx-auto mb-2 d-block" width="55" height="55">
+                                <h1 class="h3 mb-3 text-center">Novo Usuário</h1>
+                                <div class="mb-2 form-floating">
+                                    <input type="name" class="form-control" wire:model="nome" id="floatingInput" />
+                                    <label for="floatingInput">Nome completo</label>
+                                </div>
+                                <div class="mb-2 form-floating">
+                                    <input type="email" class="form-control" wire:model="email" id="floatingInput" />
+                                    <label for="floatingInput">Email</label>
+                                </div>
+                                <div class="mb-2 form-floating">
+                                    <input type="tel" class="form-control" wire:model="telefone" id="telefone" />
+                                    <label for="floatingPhone">Telefone</label>
+                                </div>
+                                <select class="mb-2 form-select" wire:model="tipo" aria-label="Default select example">
+                                    <option selected>Selecione o tipo</option>
+                                    <option value="Recepcionista">Recepcionista</option>
+                                    <option value="Enfermeiro">Enfermeiro</option>
+                                    <option value="Auxiliar de Enfermagem">Auxiliar de Enfermagem</option>
+                                    <option value="Higienização">Higienização</option>
+                                    <option value="Gestor">Gestor</option>
+                                    <option value="Manutenção">Manutenção</option>
+                                    <option value="Médico">Médico</option>
+                                </select>
+                                <select class="mb-2 form-select" wire:model="status"
+                                    aria-label="Default select example">
+                                    <option selected>Status</option>
+                                    <option value="Ativo">Ativo</option>
+                                    <option value="Inativo">Inativo</option>
+                                </select>
+                                <div class="mb-2 form-floating">
+                                    <input type="password" class="form-control" wire:model="senha"
+                                        id="floatingPassword" />
+                                    <label for="floatingPassword">Senha</label>
+                                </div>
+                                <div class="d-flex justify-content-end gap-2 mt-3">
+                                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                                    <button class="btn btn-primary" type="submit">
+                                        Salvar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>

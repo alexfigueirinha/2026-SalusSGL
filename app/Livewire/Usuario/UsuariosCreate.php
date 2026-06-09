@@ -12,6 +12,7 @@ class UsuariosCreate extends Component
     public $email;
     public $tipo;
     public $status;
+    public $senha;
     public $telefone;
     public $data_cadastro;
 
@@ -21,6 +22,7 @@ class UsuariosCreate extends Component
             'email' => $this->email,
             'tipo' => $this->tipo,
             'status' => $this->status,
+            'senha' => $this->senha,
             'telefone' => $this->telefone,
             'data_cadastro' => $this->data_cadastro
         ]);

@@ -49,9 +49,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -70,6 +70,14 @@
             </div>
 
             <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mt-4">Usuários</h2>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-primary mt-4" href="{{ route('usuario.create') }}">Novo Usuário</a>
+                    </div>
+                </div>
+
                 @if (session()->has('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
@@ -81,13 +89,6 @@
                         {{ session('success') }}
                     </div>
                 @endif
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mt-4">Usuários</h2>
-                    <div class="d-flex gap-2">
-                        <a class="btn btn-primary mt-4" href="{{ route('usuario.create') }}">Novo Usuário</a>
-                    </div>
-                </div>
 
                 <div class="mb-3">
                     <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
@@ -113,7 +114,23 @@
                                 <td>{{ $usuario->id }}</td>
                                 <td>{{ $usuario->nome }}</td>
                                 <td>{{ $usuario->email }}</td>
-                                <td>{{ $usuario->tipo }}</td>
+                                <td>
+                                    @if ($usuario->tipo == 'gestor')
+                                        <span class="badge bg-success">Gestor(a)</span>
+                                    @elseif ($usuario->tipo == 'enfermeiro')
+                                        <span class="badge bg-danger">Enfermeiro(a)</span>
+                                    @elseif ($usuario->tipo == 'recepcionista')
+                                        <span class="badge bg-info">Recepcionista</span>
+                                    @elseif ($usuario->tipo == 'auxiliar_enfermagem')
+                                        <span class="badge bg-warning">Auxiliar de Enfermagem</span>
+                                    @elseif ($usuario->tipo == 'manutencao')
+                                        <span class="badge bg-secondary">Manutenção</span>
+                                    @elseif ($usuario->tipo == 'medico')
+                                        <span class="badge bg-light text-dark">Médico</span>
+                                    @elseif ($usuario->tipo == 'higienizacao')
+                                        <span class="badge bg-primary">Higienização</span>
+                                    @endif
+                                </td>
                                 <td>{{ $usuario->status }}</td>
                                 <td>{{ $usuario->telefone }}</td>
                                 <td>{{ \Carbon\Carbon::parse($usuario->data_cadastro)->format('d/m/Y') }}</td>
