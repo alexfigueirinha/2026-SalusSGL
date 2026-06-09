@@ -71,6 +71,14 @@
 
             <div class="container">
 
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mt-4">Alas</h2>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-primary mt-4" href="{{ route('ala.create') }}">Nova Ala</a>
+                    </div>
+                </div>
+
                 @if (session()->has('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -82,13 +90,6 @@
                         {{ session('error') }}
                     </div>
                 @endif
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mt-4">Alas</h2>
-                    <div class="d-flex gap-2">
-                        <a class="btn btn-primary mt-4" href="{{ route('ala.create') }}">Nova Ala</a>
-                    </div>
-                </div>
 
                 <div class="mb-3">
                     <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">

@@ -22,7 +22,7 @@ class AlasIndex extends Component
     public function render()
     {
 
-        $alas = Ala::all();
+        $alas = Ala::where('nome', 'like', '%' . $this->search . '%')->get();
         return view('livewire.ala.alas-index', compact('alas'));
     }
 }
