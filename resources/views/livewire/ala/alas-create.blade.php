@@ -1,8 +1,4 @@
 <div>
-<<<<<<< HEAD
-
-=======
->>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
     <div class="b-example-divider"></div>
     <header class="p-3 mb-3 border-bottom">
         <div class="container">
