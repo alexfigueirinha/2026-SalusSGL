@@ -24,7 +24,6 @@ class UsuariosIndex extends Component
     {
 
          $usuarios = Usuario::all();
-
         return view('livewire.usuario.usuarios-index', compact('usuarios'));
     }
 }

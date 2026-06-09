@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Livewire\Auth\Login;
 use App\Models\User;
 use App\Models\Usuario;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,7 +24,7 @@ class DatabaseSeeder extends Seeder
             InternacaoSeeder::class
         ]);
 
-        Usuario::create([
+        User::create([
             'name' => 'Admin',
             'email' => 'admin@senai.com',
             'password' => Hash::make('123')

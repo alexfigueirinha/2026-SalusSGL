@@ -1,4 +1,5 @@
 <div>
+
     <div class="d-flex flex-column vh-100">
         <!-- TOPO -->
         <div class="border-bottom p-3 bg-white shadow-sm">
@@ -51,7 +52,7 @@
                     <li class="nav-item">
                         <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -65,43 +66,46 @@
                             <i class="bi bi-gear"></i>
                             Configurações
                         </a>
+
                     </li>
                 </ul>
             </div>
 
-    <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <form class="card p-4 shadow align-content-center" wire:submit.prevent="store">
-                        <h3 class="d-flex align-items-center">
-                            <i class="bi bi-door-open me-1 fs-3"></i>
-                            Novo Quarto
-                        </h3>
-                        <div class="mb-2 form-floating">
-                            <input type="name" class="form-control" wire:model="quarto" id="floatingInput" />
-                            <label for="floatingInput">Número do Quarto</label>
+
+            <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <form class="card p-4 shadow align-content-center" wire:submit.prevent="store">
+                                <h3 class="d-flex align-items-center">
+                                    <i class="bi bi-door-open me-1 fs-3"></i>
+                                    Novo Quarto
+                                </h3>
+                                <div class="mb-2 form-floating">
+                                    <input type="name" class="form-control" wire:model="quarto" id="floatingInput" />
+                                    <label for="floatingInput">Número do Quarto</label>
+                                </div>
+                                <select class="mb-2 form-select" wire:model="alas_id"
+                                    aria-label="Default select example">
+                                    <option selected>Selecione a ala</option>
+                                    @foreach ($alas as $ala)
+                                        <option>{{ $ala->nome }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="mb-2 form-floating">
+                                    <input type="number" class="form-control" wire:model="total_leitos"
+                                        id="totalQuartos" value="0" min="0" />
+                                    <label for="totalQuartos">Total de Leitos</label>
+                                </div>
+                                <div class="d-flex justify-content-end gap-2 mt-3">
+                                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                                    <button class="btn btn-primary" type="submit">
+                                        Criar
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <select class="mb-2 form-select" wire:model="alas_id" aria-label="Default select example">
-                            <option selected>Selecione a ala</option>
-                            @foreach ($alas as $ala)
-                            <option>{{ $ala->nome }}</option>
-                            @endforeach
-                        </select>
-                        <div class="mb-2 form-floating">
-                            <input type="number" class="form-control" wire:model="total_leitos" id="totalQuartos"
-                                value="0" min="0" />
-                            <label for="totalQuartos">Total de Leitos</label>
-                        </div>
-                        <div class="d-flex justify-content-end gap-2 mt-3">
-                            <button type="button" class="btn btn-outline-primary">Cancelar</button>
-                            <button class="btn btn-primary" type="submit">
-                                Criar
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </main>
         </div>
-    </main>
-</div>

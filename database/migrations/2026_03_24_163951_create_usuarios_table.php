@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('nome');
             $table->string('email')->unique;
             $table->string('tipo');
+            $table->enum('status', ['ativo', 'inativo'])->nullable(false)->default('ativo');
             $table->bigInteger('telefone');
-            $table->datetime('data_cadastro');
+            $table->datetime('data_cadastro')->nullable(true);
         });
     }
 

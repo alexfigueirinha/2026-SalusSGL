@@ -70,9 +70,6 @@
             </div>
 
             <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="mt-4">Internações</h2>
-                </div>
                 <div class="container mt-5">
                     <div class="row justify-content-center">
                         <div class="col-md-4">

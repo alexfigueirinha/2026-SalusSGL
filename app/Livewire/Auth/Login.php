@@ -30,7 +30,7 @@ class Login extends Component
         ])){
             session()->regenerate();
 
-            return redirect()->route('movimentacao.index');
+            return redirect()->route('internacao.index');
         }
 
         session()->flash('error', 'email ou senha incorretos');

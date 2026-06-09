@@ -51,7 +51,7 @@
                     <li class="nav-item">
                         <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">

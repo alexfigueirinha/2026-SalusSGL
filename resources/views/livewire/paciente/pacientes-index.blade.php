@@ -49,9 +49,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -81,6 +81,13 @@
                         {{ session('success') }}
                     </div>
                 @endif
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mt-4">Pacientes</h2>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-primary mt-4" href="{{ route('paciente.create') }}">Novo Paciente</a>
+                    </div>
+                </div>
 
                 <div class="mb-3">
                     <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
