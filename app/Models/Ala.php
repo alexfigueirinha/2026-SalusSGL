@@ -24,4 +24,10 @@ class Ala extends Model
     public function internacaos() {
     return $this->hasMany(Internacao::class); 
     }
+
+    public function leitos()
+{
+    return $this->hasManyThrough(Leito::class, Quarto::class, 'alas_id', 'quartos_id');
+}
+
 }
