@@ -68,9 +68,6 @@
                     </li>
                 </ul>
             </div>
-<<<<<<< HEAD
-</div>
-=======
         </div>
     </header>
 
@@ -113,4 +110,3 @@
         </div>
     </div>
 </div>
->>>>>>> e18a56413ba2e257a9d1ebb7dce529a2213c5f25
