@@ -96,13 +96,6 @@
                             <label for="floatingPhone">CPF</label>
                         </div>
 
-                        <select class="mb-2 form-select" wire:model="leito_atual" aria-label="Default select example">
-                            <option selected>Selecione o leito</option>
-                            @foreach ($leitos as $leito)
-                            <option>{{ $leito->id }} {{ $leito->nome }}</option>
-                            @endforeach
-
-                        </select>
                         <div class="d-flex justify-content-end gap-2 mt-3">
                             <button type="button" class="btn btn-outline-primary">Cancelar</button>
                             <button class="btn btn-primary" type="submit">

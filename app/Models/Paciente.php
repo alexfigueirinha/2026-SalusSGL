@@ -13,8 +13,7 @@ class Paciente extends Model
         'nome',
         'cpf',
         'data_nascimento',
-        'telefone',
-        'leito_atual',
+        'telefone'
     ];
 
     public function internacaos()

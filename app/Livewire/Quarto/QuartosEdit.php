@@ -40,6 +40,7 @@ class QuartosEdit extends Component
             session()->flash('error', 'não encontrado');
             return redirect()->route('quarto.index');
         }
+
         if ($quarto->alas_id != $this->alas_id) {
             $alaOld = Ala::find($quarto->alas_id);
             if ($alaOld != null) {
@@ -53,6 +54,7 @@ class QuartosEdit extends Component
             }
 
         }
+        
         $quarto->quarto = $this->quarto;
         $quarto->total_leitos = $this->total_leitos;
         $quarto->data_criacao = $this->data_criacao;

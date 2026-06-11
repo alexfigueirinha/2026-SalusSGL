@@ -18,7 +18,6 @@ return new class extends Migration
             $table->BigInteger('cpf');
             $table->date('data_nascimento');
             $table->bigInteger('telefone')->nullable(true);
-            $table->string('leito_atual')->unique;
             $table->string('nome');
         });
     }

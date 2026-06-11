@@ -85,10 +85,16 @@
                             <input type="name" class="form-control" wire:model="leito" id="floatingInput" />
                             <label for="floatingInput">Número do Leito</label>
                         </div>
+                        <select class="mb-2 form-select" wire:model="alas_id" aria-label="Default select example">
+                            <option selected>Selecione a ala</option>
+                            @foreach ($alas as $ala)
+                            <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
+                            @endforeach
+                        </select>
                         <select class="mb-2 form-select" wire:model="quartos_id" aria-label="Default select example">
                             <option selected>Selecione o quarto</option>
                             @foreach ($quartos as $quarto)
-                            <option>{{ $quarto->quarto }}</option>
+                            <option value="{{ $quarto->id }}">{{ $quarto->quarto }} - {{ $quarto->alas->nome }}</option>
                             @endforeach
                         </select>
                         <select class="mb-2 form-select" wire:model="atualizacao" aria-label="Default select example">

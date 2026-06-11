@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('quartos_id');
+            $table->unsignedBigInteger('alas_id');
             $table->string('leito');
             $table->enum('atualizacao', ['disponivel', 'ocupado', 'em_limpeza', 'reservado', 'manutencao', 'emergencia'])->nullable(false)->default('disponivel');
             $table->date('data_criacao')->nullable(true);
             $table->foreign('quartos_id')->references('id')->on('quartos');
+            $table->foreign('alas_id')->references('id')->on('alas');
        });
     }
 

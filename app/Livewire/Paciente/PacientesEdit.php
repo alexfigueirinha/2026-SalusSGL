@@ -11,7 +11,6 @@ class PacientesEdit extends Component
     public $cpf;
     public $data_nascimento;
     public $telefone;
-    public $leito_atual;
     public $data_entrada;
     public $pacienteId;
 
@@ -30,7 +29,6 @@ class PacientesEdit extends Component
         $this->cpf = $paciente->cpf;
         $this->data_nascimento = $paciente->data_nascimento;
         $this->telefone = $paciente->telefone;
-        $this->leito_atual = $paciente->leito_atual;
         $this->data_entrada = $paciente->data_entrada;
     }
 
@@ -49,7 +47,6 @@ class PacientesEdit extends Component
         $this->cpf = $paciente->cpf;
         $this->data_nascimento = $paciente->data_nascimento;
         $this->telefone = $paciente->telefone;
-        $this->leito_atual = $paciente->leito_atual;
         $this->data_entrada = $paciente->data_entrada;
 
         $paciente->save();

@@ -97,7 +97,8 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>#</th>
+                    <th>Ala</th>
                     <th>Quarto</th>
                     <th>Leito</th>
                     <th>Status</th>
@@ -110,7 +111,8 @@
                 @foreach ($leitos as $leito)
                 <tr>
                     <td>{{ $leito->id }}</td>
-                    <td>{{ $leito->quartos_id }}</td>
+                    <td>{{ $leito->alas->nome}}</td>
+                    <td>{{ $leito->quartos->quarto }}</td>
                     <td>{{ $leito->leito }}</td>
                     <td>
                         @if ($leito->atualizacao == 'disponivel')

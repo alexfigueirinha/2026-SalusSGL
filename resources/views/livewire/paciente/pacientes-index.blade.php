@@ -101,7 +101,6 @@
                             <th>CPF</th>
                             <th>Data de Nascimento</th>
                             <th>Telefone</th>
-                            <th>Leito Atual</th>
                             <th>Data de Entrada</th>
                             <th>Ações</th>
                         </tr>
@@ -115,7 +114,6 @@
                                 <td>{{ $paciente->cpf }}</td>
                                 <td>{{ $paciente->data_nascimento }}</td>
                                 <td>{{ $paciente->telefone }}</td>
-                                <td>{{ $paciente->leito_atual }}</td>
                                 <td>{{ \Carbon\Carbon::parse($paciente->data_hora)->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="{{ route('paciente.edit', ['id' => $paciente->id]) }}"

@@ -21,6 +21,10 @@ class Ala extends Model
     return $this->hasMany(Quarto::class); 
     }
 
+    public function leitos() {
+    return $this->hasMany(Leito::class); 
+    }
+
     public function internacaos() {
     return $this->hasMany(Internacao::class); 
     }

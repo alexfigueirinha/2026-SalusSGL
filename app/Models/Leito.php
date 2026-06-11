@@ -13,11 +13,16 @@ class Leito extends Model
         'leito',
         'atualizacao',
         'data_criacao',
-        'quartos_id'
+        'quartos_id',
+        'alas_id'
     ];
 
     public function quartos() {
     return $this->belongsTo(Quarto::class); 
+    }
+
+    public function alas() {
+    return $this->belongsTo(Ala::class); 
     }
     
     public function statusLeitos() {

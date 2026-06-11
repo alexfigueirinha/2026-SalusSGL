@@ -13,7 +13,6 @@ class PacientesCreate extends Component
     public $cpf;
     public $data_nascimento;
     public $telefone;
-    public $leito_atual;
     public $data_entrada;
 
     public function store()
@@ -24,7 +23,6 @@ class PacientesCreate extends Component
             'cpf' => $this->cpf,
             'data_nascimento' => $this->data_nascimento,
             'telefone' => $this->telefone,
-            'leito_atual' => $this->leito_atual,
             'data_entrada' => $this->data_entrada
         ]);
 
