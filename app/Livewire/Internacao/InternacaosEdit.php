@@ -2,7 +2,11 @@
 
 namespace App\Livewire\Internacao;
 
+use App\Models\Ala;
 use App\Models\Internacao;
+use App\Models\Leito;
+use App\Models\Paciente;
+use App\Models\Quarto;
 use Livewire\Component;
 
 class InternacaosEdit extends Component
@@ -60,6 +64,10 @@ class InternacaosEdit extends Component
 
     public function render()
     {
-        return view('livewire.internacao.internacaos-edit');
+        $pacientes = Paciente::all();
+        $alas = Ala::all();
+        $quartos = Quarto::all();
+        $leitos = Leito::all();
+        return view('livewire.internacao.internacaos-edit', compact('pacientes', 'alas', 'quartos', 'leitos'));
     }
 }
