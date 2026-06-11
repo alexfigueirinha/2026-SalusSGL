@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
                             Internação
                         </a>
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" >
 
             @if (session()->has('success'))
                 <div class="alert alert-success">
@@ -128,3 +128,4 @@
             </table>
         </div>
     </div>
+</div>

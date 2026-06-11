@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->BigInteger('cpf');
             $table->date('data_nascimento');
-            $table->bigInteger('telefone');
+            $table->bigInteger('telefone')->nullable(true);
             $table->string('leito_atual')->unique;
             $table->string('nome');
         });

@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
                             Internação
                         </a>
@@ -89,7 +89,7 @@
                                     aria-label="Default select example">
                                     <option selected>Selecione a ala</option>
                                     @foreach ($alas as $ala)
-                                        <option>{{ $ala->nome }}</option>
+                                        <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
                                     @endforeach
                                 </select>
                                 <div class="mb-2 form-floating">

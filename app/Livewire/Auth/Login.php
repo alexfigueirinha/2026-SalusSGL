@@ -26,7 +26,7 @@ class Login extends Component
 
         if(Login::attempt([
             'email' =>$this->email,
-            'password' =>$this->password
+            'password' =>$this->senha
         ])){
             session()->regenerate();
 

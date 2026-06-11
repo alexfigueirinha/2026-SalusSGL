@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Quarto;
 
+use App\Models\Ala;
 use App\Models\Quarto;
 use Livewire\Component;
 
@@ -28,7 +29,7 @@ class QuartosEdit extends Component
         $this->total_leitos = $quarto->total_leitos;
         $this->data_criacao = $quarto->data_criacao;
         $this->leitos_cadastrados = $quarto->leitos_cadastrados;
-        $this->alas_id = $quarto->id;
+        $this->alas_id = $quarto->alas_id;
     }
 
     public function update()
@@ -39,7 +40,19 @@ class QuartosEdit extends Component
             session()->flash('error', 'não encontrado');
             return redirect()->route('quarto.index');
         }
-        
+        if ($quarto->alas_id != $this->alas_id) {
+            $alaOld = Ala::find($quarto->alas_id);
+            if ($alaOld != null) {
+                $alaOld->quartos_cadastrados--;
+                $alaOld->save();
+            }
+            $alaNew = Ala::find($this->alas_id);
+            if ($alaNew != null) {
+                $alaNew->quartos_cadastrados++;
+                $alaNew->save();
+            }
+
+        }
         $quarto->quarto = $this->quarto;
         $quarto->total_leitos = $this->total_leitos;
         $quarto->data_criacao = $this->data_criacao;
@@ -54,6 +67,7 @@ class QuartosEdit extends Component
 
     public function render()
     {
-        return view('livewire.quarto.quartos-edit');
+        $alas = Ala::all();
+        return view('livewire.quarto.quartos-edit',compact('alas'));
     }
 }

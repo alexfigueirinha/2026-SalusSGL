@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('internacaos', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('data_hora_entrada');
-            $table->dateTime('data_hora_saida');
+            $table->dateTime('data_hora_entrada')->nullable(true);
+            $table->dateTime('data_hora_saida')->nullable(true);
             $table->unsignedBigInteger('pacientes_id');
             $table->unsignedBigInteger('leitos_id');
             $table->unsignedBigInteger('alas_id');

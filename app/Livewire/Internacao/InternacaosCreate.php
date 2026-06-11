@@ -25,7 +25,8 @@ class InternacaosCreate extends Component
             'data_hora_saida' => $this->data_hora_saida,
             'pacientes_id' => $this->pacientes_id,
             'leitos_id' => $this->leitos_id,
-            'alas_id' => $this->alas_id
+            'alas_id' => $this->alas_id,
+            'quartos_id' => $this->quartos_id
         ]);
 
         session()->flash('success', 'Cadastrado');

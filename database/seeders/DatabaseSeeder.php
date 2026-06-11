@@ -23,13 +23,12 @@ class DatabaseSeeder extends Seeder
             LeitoSeeder::class,
             InternacaoSeeder::class
         ]);
-
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@senai.com',
-            'password' => Hash::make('123')
-        ]);
         
+        Usuario::create([
+            'nome' => 'Admin',
+            'email' => 'admin@senai.com',
+            'senha' => Hash::make('123')
+        ]);
     }
     
 }
