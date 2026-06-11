@@ -119,7 +119,7 @@
                                 <td>{{ $paciente->data_entrada }}</td>
                                 <td>{{ \Carbon\Carbon::parse($paciente->data_hora)->format('d/m/Y') }}</td>
                                 <td>
-                                    <a href="{{ route('pacientes.edit', ['id' => $paciente->id]) }}"
+                                    <a href="{{ route('paciente.edit', ['id' => $paciente->id]) }}"
                                         class="btn btn-primary btn-sm">Editar</a>
 
                                     <button class="btn btn-danger btn-sm" wire:click="excluir ({{ $paciente->id }})"

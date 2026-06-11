@@ -110,7 +110,7 @@
 
                     <tbody>
                         @foreach ($alas as $ala)
-                            <tr>
+                        <tr>
                                 <td>{{ $ala->id }}</td>
                                 <td>{{ $ala->nome }}</td>
                                 <td>{{ $ala->descricao }}</td>
