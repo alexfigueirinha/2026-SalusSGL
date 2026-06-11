@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('leito');
             $table->enum('atualizacao', ['disponivel', 'ocupado', 'em_limpeza', 'reservado', 'manutencao', 'emergencia'])->nullable(false)->default('disponivel');
             $table->date('data_criacao')->nullable(true);
+            $table->string('status')->default('disponivel');
             $table->foreign('quartos_id')->references('id')->on('quartos');
             $table->foreign('alas_id')->references('id')->on('alas');
        });

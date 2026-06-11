@@ -13,6 +13,12 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    <!-- CSS do Bootstrap 5 (Garante o alinhamento em colunas dos cards) -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+
+    <!-- Ícones do Bootstrap (Faz aparecer os ícones dos cards) -->
+    <link rel="stylesheet" href="https://jsdelivr.net">
+
     @livewireStyles
 </head>
 

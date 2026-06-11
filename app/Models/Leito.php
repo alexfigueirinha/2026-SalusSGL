@@ -26,7 +26,7 @@ class Leito extends Model
     }
     
     public function statusLeitos() {
-    return $this->hasMany(StatusLeito::class); 
+    return $this->hasMany(StatusLeito::class, 'leitos_id'); 
     }
 
     public function movimentacaoLeito() {
