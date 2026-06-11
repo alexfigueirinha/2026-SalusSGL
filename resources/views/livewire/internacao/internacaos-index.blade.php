@@ -111,14 +111,10 @@
                             <tr>
                                 <td>{{ $internacao->id }}</td>
                                 <td>{{ $internacao->pacientes->nome }}</td>
-                                <td><b>ID:</b> {{ $internacao->alas_id }} - <b>ALA:</b> {{ $internacao->alas->nome }}
-                                </td>
-                                <td><b>ID:</b> {{ $internacao->quartos_id }} - <b>QUARTO:</b>
-                                    {{ $internacao->quartos->quarto }}</td>
-                                <td><b>ID:</b> {{ $internacao->leitos_id }} - <b>LEITO:</b>
-                                    {{ $internacao->leito->leito }}</td>
-                                <td>{{ \Carbon\Carbon::parse($internacao->data_hora_entrada)->format('d/m/Y H:i:s') }}
-                                </td>
+                                <td><b>ID:</b> {{ $internacao->alas_id }} / <b>ALA:</b> {{ $internacao->alas->nome }}</td>
+                                <td><b>ID:</b> {{ $internacao->quartos_id }} / <b>QUARTO:</b>{{ $internacao->quartos->quarto }}</td>
+                                <td><b>ID:</b> {{ $internacao->leitos_id }} / <b>LEITO: </b>{{ $internacao->leitos->leito }}</td>
+                                <td>{{ \Carbon\Carbon::parse($internacao->data_hora_entrada)->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="{{ route('internacao.edit', ['id' => $internacao->id]) }}"
                                         class="btn btn-primary btn-sm">Editar</a>

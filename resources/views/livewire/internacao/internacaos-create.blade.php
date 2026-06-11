@@ -51,7 +51,7 @@
                     <li class="nav-item">
                         <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -78,28 +78,28 @@
                                     <i class="bi bi-door-open me-1 fs-3"></i>
                                     Registrar Internação
                                 </h3>
-                                <select class="mb-2 form-select" aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='pacientes_id' aria-label="Default select example">
                                     <option selected>Selecione o paciente</option>
                                     @foreach ($pacientes as $paciente)
-                                        <option>{{ $paciente->nome }}</option>
+                                        <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
                                     @endforeach
                                 </select>
-                                <select class="mb-2 form-select" aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='alas_id' aria-label="Default select example">
                                     <option selected>Selecione a ala</option>
                                     @foreach ($alas as $ala)
-                                        <option>{{ $ala->nome }}</option>
+                                        <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
                                     @endforeach
                                 </select>
-                                <select class="mb-2 form-select" aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='quartos_id' aria-label="Default select example">
                                     <option selected>Selecione o quarto</option>
                                     @foreach ($quartos as $quarto)
-                                        <option>{{ $quarto->quarto }}</option>
+                                        <option value="{{ $quarto->id }}">{{ $quarto->quarto }}</option>
                                     @endforeach
                                 </select>
-                                <select class="mb-2 form-select" aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='leitos_id' aria-label="Default select example">
                                     <option selected>Selecione o leito</option>
                                     @foreach ($leitos as $leito)
-                                        <option>{{ $leito->leito }}</option>
+                                        <option value="{{ $leito->id }}">{{ $leito->leito }}</option>
                                     @endforeach
                                 </select>
                                 <div class="d-flex justify-content-end gap-2 mt-3">

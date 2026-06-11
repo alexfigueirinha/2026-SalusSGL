@@ -22,8 +22,14 @@ class QuartosCreate extends Component
             'quarto' => $this->quarto,
             'total_leitos' => $this->total_leitos,
             'data_criacao' => $this->data_criacao,
+            'leitos_cadastrados' => 0,
             'alas_id' => $this->alas_id
         ]);
+        $ala = Ala::find($this->alas_id);
+        if($ala != null){
+            $ala->quartos_cadastrados ++;
+            $ala->save();
+        }
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('quarto.index');

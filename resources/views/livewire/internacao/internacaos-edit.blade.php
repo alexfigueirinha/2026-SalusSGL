@@ -39,7 +39,7 @@
                     <li class="nav-item">
                         <a href="{{ route('usuario.index') }}" class="nav-link">
                             <i class="bi bi-people-fill"></i>
-                            Usuários
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
                             Histórico
                         </a>

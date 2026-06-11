@@ -21,7 +21,7 @@ class AlasCreate extends Component
             'nome' => $this->nome,
             'total_quartos' => $this->total_quartos,
             'data_criacao' => $this->data_criacao,
-            'quartos_cadastrados' => $this->quartos_cadastrados,
+            'quartos_cadastrados' => 0,
             'descricao' => $this->descricao
         ]);
 

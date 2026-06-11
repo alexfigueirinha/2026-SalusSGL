@@ -13,6 +13,7 @@ class Quarto extends Model
         'quarto',
         'total_leitos',
         'data_criacao',
+        'leitos_cadastrados',
         'alas_id'
     ];
 

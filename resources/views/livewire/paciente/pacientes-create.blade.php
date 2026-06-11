@@ -49,9 +49,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -87,7 +87,7 @@
                             <label for="dataNascimento">Data de Nascimento</label>
                         </div>
                         <div class="mb-2 form-floating">
-                            <input type="tel" class="form-control" id="telefone" />
+                            <input type="tel" class="form-control" id="telefone" wire:model='telefone' />
                             <label for="floatingPhone">Telefone</label>
                         </div>
 

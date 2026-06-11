@@ -116,7 +116,6 @@
                                 <td>{{ $paciente->data_nascimento }}</td>
                                 <td>{{ $paciente->telefone }}</td>
                                 <td>{{ $paciente->leito_atual }}</td>
-                                <td>{{ $paciente->data_entrada }}</td>
                                 <td>{{ \Carbon\Carbon::parse($paciente->data_hora)->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="{{ route('paciente.edit', ['id' => $paciente->id]) }}"

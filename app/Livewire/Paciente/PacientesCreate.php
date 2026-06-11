@@ -18,6 +18,7 @@ class PacientesCreate extends Component
 
     public function store()
     {
+
         Paciente::create([
             'nome' => $this->nome,
             'cpf' => $this->cpf,

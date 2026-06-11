@@ -49,9 +49,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -74,7 +74,7 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <form class="card p-4 shadow align-content-center" wire:submit.prevent="store">
+                    <form class="card p-4 shadow align-content-center" wire:submit.prevent="update">
                         <h3 class="d-flex align-items-center">
                             <i class="bi bi-door-open me-1 fs-3"></i>
                             Editar Quarto
@@ -86,7 +86,7 @@
                         <select class="mb-2 form-select" wire:model="alas_id" aria-label="Default select example">
                             <option selected>Selecione a ala</option>
                             @foreach ($alas as $ala)
-                                <option>{{ $ala->nome }}</option>
+                                <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
                             @endforeach
                         </select>
                         <div class="mb-2 form-floating">

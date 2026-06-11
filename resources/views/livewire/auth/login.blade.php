@@ -56,7 +56,7 @@
                     <li class="nav-item">
                         <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
-                            Histórico
+                            Internação
                         </a>
                     </li>
                     <li class="nav-item">
@@ -93,7 +93,7 @@
                                 <div class="mb-1 form-floating">
                                     <input type="password" class="form-control" id="floatingPassword" />
                                     <label for="floatingPassword">Senha</label>
-                                    @error('password')
+                                    @error('senha')
                                         <span class="text-danger small"> {{ $message }} </span>
                                     @enderror
                                 </div>
