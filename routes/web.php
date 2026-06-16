@@ -20,9 +20,6 @@ use App\Livewire\Dashboard;
 use App\Livewire\Leito\LeitosCreate;
 use App\Livewire\Leito\LeitosEdit;
 use App\Livewire\Leito\LeitosIndex;
-use App\Livewire\Movimentacao\MovimentacoesLeitosIndex;
-use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosCreate;
-use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosEdit;
 use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosIndex;
 use App\Livewire\QrCode;
 use App\Livewire\StatusLeito\StatusLeitosCreate;
@@ -57,9 +54,7 @@ Route::get('leito/create', LeitosCreate::class)->name('leito.create');
 Route::get('leito/index', LeitosIndex::class)->name('leito.index');
 Route::get('leito/edit/{id}', LeitosEdit::class)->name('leito.edit');
 
-Route::get('movimentacao/leito/create', MovimentacaoLeitosCreate::class)->name('movimentacao.leito.create');
-Route::get('movimentacao/leito/index', MovimentacoesLeitosIndex::class)->name('movimentacao.leito.index');
-Route::get('movimentacao/leito/edit/{id}', MovimentacaoLeitosEdit::class)->name('movimentacao.leito.edit');
+Route::get('movimentacaoLeito/index', MovimentacaoLeitosIndex::class)->name('movimentacaoLeito.index');
 
 Route::get('status/leito/create', StatusLeitosCreate::class)->name('status.leito.create');
 Route::get('status/leito/index', StatusLeitosIndex::class)->name('status.leito.index');

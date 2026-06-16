@@ -50,9 +50,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('movimentacao.leito.index') }}" class="nav-link">
+                        <a href="{{ route('internacao.index') }}" class="nav-link">
                             <i class="bi bi-clipboard2-data"></i>
                             Internação
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('movimentacaoLeito.index') }}" class="nav-link">
+                            <i class="bi bi-clock-history"></i>
+                            Histórico
                         </a>
                     </li>
                     <li class="nav-item">

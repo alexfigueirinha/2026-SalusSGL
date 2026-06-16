@@ -37,4 +37,5 @@ class Internacao extends Model
     {
         return $this->belongsTo(Paciente::class);
     }
+
 }

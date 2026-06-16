@@ -1,53 +1,38 @@
 <?php
 
-namespace App\Livewire\Movimentacao;
+namespace App\Livewire\MovimentacaoLeito;
 
 use App\Models\MovimentacaoLeito;
 use Livewire\Component;
-use Livewire\WithPagination;
 
-class MovimentacoesLeitosIndex extends Component
+class MovimentacaoLeitosIndex extends Component
 {
-    use WithPagination;
-
     public $search = '';
-
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
 
     public function delete($id)
     {
-        $mov = MovimentacaoLeito::find($id);
-        if ($mov) {
-            $mov->delete();
-            session()->flash('success', 'Movimentação excluída do histórico.');
+        $movimentacaoLeito = MovimentacaoLeito::find($id);
+
+        if ($movimentacaoLeito != null) {
+            $movimentacaoLeito->delete();
+            session()->flash('success', 'Excluído');
         }
     }
 
     public function render()
     {
-        // Busca trazendo os relacionamentos do banco filtrando por busca
-        $movimentacoes = MovimentacaoLeito::with(['paciente', 'leito.quarto'])
-            ->when($this->search, function ($query) {
-                $query->whereHas('paciente', function ($q) {
-                    $q->where('nome', 'like', '%' . $this->search . '%');
-                });
+        $historicos = MovimentacaoLeito::with('paciente')
+            ->whereHas('paciente', function ($query) {
+                $query->where('nome', 'like', '%' . $this->search . '%');
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
-        // Estatísticas dos cards inferiores da tela
+        // Cálculos dos Cards inferiores (Figma)
         $totalMovimentacoes = MovimentacaoLeito::count();
-        $ultimas24Horas = MovimentacaoLeito::where('created_at', '>=', now()->subDay())->count();
-        $ultimaMovimentacao = MovimentacaoLeito::with('paciente')->orderBy('created_at', 'desc')->first();
+        $ultimas24h = MovimentacaoLeito::where('created_at', '>=', now()->subDay())->count();
+        $ultimaMovimentacao = MovimentacaoLeito::with('paciente')->latest()->first();
 
-        return view('livewire.movimentacao.movimentacoes-leitos-index', compact(
-            'movimentacoes',
-            'totalMovimentacoes',
-            'ultimas24Horas',
-            'ultimaMovimentacao'
-        ));
+        return view('livewire.movimentacao-leito.movimentacao-leitos-index', compact('historicos', 'totalMovimentacoes', 'ultimas24h', 'ultimaMovimentacao'));
     }
 }

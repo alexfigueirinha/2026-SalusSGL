@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('movimentacao_leitos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('quartos_id');
-            $table->unsignedBigInteger('leitos_id');
-            $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('quartos_id')->references('id')->on('quartos');
-            $table->foreign('leitos_id')->references('id')->on('leitos');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('internacao_id');
+            $table->foreign('internacao_id')->references('id')->on('internacaos');
+            $table->unsignedBigInteger('paciente_id');
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->string('movimentacao');
+            $table->string('motivo')->nullable();
+            $table->string('solicitado_por')->nullable();
+            $table->string('aprovado_por')->nullable();
+            $table->text('observacoes')->nullable();
             $table->timestamps();
         });
     }

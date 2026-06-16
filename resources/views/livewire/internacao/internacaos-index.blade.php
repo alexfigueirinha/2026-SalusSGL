@@ -55,6 +55,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('movimentacaoLeito.index') }}" class="nav-link">
+                            <i class="bi bi-clock-history"></i>
+                            Histórico
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="bi bi-qr-code"></i>
                             QR Code
@@ -111,9 +117,9 @@
                             <tr>
                                 <td>{{ $internacao->id }}</td>
                                 <td>{{ $internacao->pacientes->nome }}</td>
-                                <td><b>ID:</b> {{ $internacao->alas_id }} / <b>ALA:</b> {{ $internacao->alas->nome }}</td>
-                                <td><b>ID:</b> {{ $internacao->quartos_id }} / <b>QUARTO:</b>{{ $internacao->quartos->quarto }}</td>
-                                <td><b>ID:</b> {{ $internacao->leitos_id }} / <b>LEITO: </b>{{ $internacao->leitos->leito }}</td>
+                                <td>{{ $internacao->alas_id }} - {{ $internacao->alas->nome }}</td>
+                                <td>{{ $internacao->quartos_id }} - {{ $internacao->quartos->quarto }}</td>
+                                <td>{{ $internacao->leitos_id }} - {{ $internacao->leitos->leito }}</td>
                                 <td>{{ \Carbon\Carbon::parse($internacao->data_hora_entrada)->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="{{ route('internacao.edit', ['id' => $internacao->id]) }}"

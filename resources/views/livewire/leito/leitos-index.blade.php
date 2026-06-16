@@ -1,5 +1,5 @@
 <div>
-    
+
     <div class="d-flex flex-column vh-100">
         <!-- TOPO -->
         <div class="border-bottom p-3 bg-white shadow-sm">
@@ -56,6 +56,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('movimentacaoLeito.index') }}" class="nav-link">
+                            <i class="bi bi-clock-history"></i>
+                            Histórico
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="bi bi-qr-code"></i>
                             QR Code
@@ -70,74 +76,75 @@
                 </ul>
             </div>
 
-    <div class="container">
-        @if (session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-        @endif
+            <div class="container">
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
 
-        @if (session()->has('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="mt-4">Leitos</h2>
                     <div class="d-flex gap-2">
                         <a class="btn btn-primary mt-4" href="{{ route('leito.create') }}">Novo Leito</a>
                     </div>
                 </div>
 
-        <div class="mb-3">
-            <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
+                <div class="mb-3">
+                    <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ala</th>
+                            <th>Quarto</th>
+                            <th>Leito</th>
+                            <th>Status</th>
+                            <th>Data de Criação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach ($leitos as $leito)
+                            <tr>
+                                <td>{{ $leito->id }}</td>
+                                <td>{{ $leito->alas->nome }}</td>
+                                <td>{{ $leito->quartos->quarto }}</td>
+                                <td>{{ $leito->leito }}</td>
+                                <td>
+                                    @if ($leito->atualizacao == 'disponivel')
+                                        <span class="badge bg-success">Disponível</span>
+                                    @elseif ($leito->atualizacao == 'ocupado')
+                                        <span class="badge bg-danger">Ocupado</span>
+                                    @elseif ($leito->atualizacao == 'em_limpeza')
+                                        <span class="badge bg-info">Em Limpeza</span>
+                                    @elseif ($leito->atualizacao == 'reservado')
+                                        <span class="badge bg-warning">Reservado</span>
+                                    @elseif ($leito->atualizacao == 'manutencao')
+                                        <span class="badge bg-secondary">Manutenção</span>
+                                    @elseif ($leito->atualizacao == 'emergencia')
+                                        <span class="badge bg-light">Emergência</span>
+                                    @endif
+                                </td>
+                                <td>{{ \Carbon\Carbon::parse($leito->data_criacao)->format('d/m/Y') }}</td>
+                                <td>
+                                    <a href="{{ route('leito.edit', ['id' => $leito->id]) }}"
+                                        class="btn btn-primary btn-sm">Editar</a>
+                                    <button wire:click='delete({{ $leito->id }})'
+                                        class="btn btn-sm btn-danger">Excluir</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Ala</th>
-                    <th>Quarto</th>
-                    <th>Leito</th>
-                    <th>Status</th>
-                    <th>Data de Criação</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach ($leitos as $leito)
-                <tr>
-                    <td>{{ $leito->id }}</td>
-                    <td>{{ $leito->alas->nome}}</td>
-                    <td>{{ $leito->quartos->quarto }}</td>
-                    <td>{{ $leito->leito }}</td>
-                    <td>
-                        @if ($leito->atualizacao == 'disponivel')
-                        <span class="badge bg-success">Disponível</span>
-                        @elseif ($leito->atualizacao == 'ocupado')
-                        <span class="badge bg-danger">Ocupado</span>
-                        @elseif ($leito->atualizacao == 'em_limpeza')
-                        <span class="badge bg-info">Em Limpeza</span>
-                        @elseif ($leito->atualizacao == 'reservado')
-                        <span class="badge bg-warning">Reservado</span>
-                        @elseif ($leito->atualizacao == 'manutencao')
-                        <span class="badge bg-secondary">Manutenção</span>
-                        @elseif ($leito->atualizacao == 'emergencia')
-                        <span class="badge bg-light">Emergência</span>
-                        @endif
-                    </td>
-                    <td>{{ \Carbon\Carbon::parse($leito->data_criacao)->format('d/m/Y') }}</td>
-                    <td>
-                        <a href="{{ route('leito.edit', ['id' => $leito->id]) }}"
-                            class="btn btn-primary btn-sm">Editar</a>
-                        <button wire:click='delete({{ $leito->id }})' class="btn btn-sm btn-danger">Excluir</button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>

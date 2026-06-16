@@ -55,6 +55,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('movimentacaoLeito.index') }}" class="nav-link">
+                            <i class="bi bi-clock-history"></i>
+                            Histórico
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="bi bi-qr-code"></i>
                             QR Code
