@@ -23,6 +23,7 @@ use App\Livewire\Leito\LeitosIndex;
 use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosCreate;
 use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosEdit;
 use App\Livewire\MovimentacaoLeito\MovimentacaoLeitosIndex;
+use App\Livewire\QrCode;
 use App\Livewire\StatusLeito\StatusLeitosCreate;
 use App\Livewire\StatusLeito\StatusLeitosEdit;
 use App\Livewire\StatusLeito\StatusLeitosIndex;
@@ -70,3 +71,5 @@ Route::get('usuario/edit/{id}', UsuariosEdit::class)->name('usuario.edit');
 Route::get('/login', Login::class)->name('login');
 
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
+
+Route::get('/qrCode', QrCode::class)->name('qrCode');
