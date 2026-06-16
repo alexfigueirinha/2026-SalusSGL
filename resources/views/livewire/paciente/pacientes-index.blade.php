@@ -119,7 +119,7 @@
                                     <a href="{{ route('paciente.edit', ['id' => $paciente->id]) }}"
                                         class="btn btn-primary btn-sm">Editar</a>
 
-                                    <button class="btn btn-danger btn-sm" wire:click="excluir ({{ $paciente->id }})"
+                                    <button class="btn btn-danger btn-sm" wire:click="delete ({{ $paciente->id }})"
                                         wire:confirm="Deseja excluir a tarefa?">Excluir</button>
                                 </td>
                             </tr>

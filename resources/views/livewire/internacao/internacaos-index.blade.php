@@ -118,7 +118,7 @@
                                 <td>
                                     <a href="{{ route('internacao.edit', ['id' => $internacao->id]) }}"
                                         class="btn btn-primary btn-sm">Editar</a>
-                                    <button class="btn btn-danger btn-sm" wire:click="excluir({{ $internacao->id }})"
+                                    <button class="btn btn-danger btn-sm" wire:click="delete({{ $internacao->id }})"
                                         wire:confirm="Deseja excluir o quarto?">Excluir</button>
                                 </td>
                             </tr>
