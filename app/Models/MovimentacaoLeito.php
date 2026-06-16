@@ -9,24 +9,30 @@ class MovimentacaoLeito extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
-        'quartos_id',
+    protected $table = 'movimentacao_leitos';
+
+    protected $fillable = [
+        'pacientes_id',
         'leitos_id',
-        'usuarios_id'
+        'motivo',
+        'solicitado_por',
+        'aprovado_por',
+        'observacoes'
     ];
 
-    public function quartos()
-    {
-        return $this->belongsTo(Quarto::class);
+    public function paciente() {
+        return $this->belongsTo(Paciente::class, 'pacientes_id');
     }
 
-    public function leitos()
-    {
-        return $this->belongsTo(Leito::class);
+    public function leito() {
+        return $this->belongsTo(Leito::class, 'leitos_id');
     }
 
-    public function usuarios()
-    {
-        return $this->belongsTo(Usuario::class);
+    public function usuarioSolicitado() {
+        return $this->belongsTo(User::class, 'solicitado_por');
+    }
+
+    public function usuarioAprovado() {
+        return $this->belongsTo(User::class, 'aprovado_por');
     }
 }
