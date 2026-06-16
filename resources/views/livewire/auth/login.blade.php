@@ -78,20 +78,20 @@
                 <div class="container mt-5">
                     <div class="row justify-content-center">
                         <div class="col-md-4">
-                            <form class="card p-4 shadow align-content-center" wire:model.prevent='login'>
+                            <form class="card p-4 shadow align-content-center" wire:submit.prevent='login'>
                                 <h2 class="d-flex align-items-center">
                                     <i class="bi bi-person-fill me-1 fs-3"></i>
                                     Login
                                 </h2>
                                 <div class="mb-2 form-floating">
-                                    <input type="email" class="form-control" id="floatingInput" />
+                                    <input type="email" class="form-control" wire:model='email' id="email" />
                                     <label for="floatingInput">Email</label>
                                     @error('email')
                                         <span class="text-danger small"> {{ $message }} </span>
                                     @enderror
                                 </div>
                                 <div class="mb-1 form-floating">
-                                    <input type="password" class="form-control" id="floatingPassword" />
+                                    <input type="password" class="form-control" wire:model='password' id="password" />
                                     <label for="floatingPassword">Senha</label>
                                     @error('senha')
                                         <span class="text-danger small"> {{ $message }} </span>
@@ -103,7 +103,7 @@
                                 <button type="submit" class="btn btn-primary w-100 py-2">Entrar</button>
                                 <p class="mt-3 text-center">Não tem uma conta? <a
                                         class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                                        href="">Cadastre-se</a></p>
+                                        href="{{ route('dashboard') }}">Cadastre-se</a></p>
                             </form>
                         </div>
                     </div>

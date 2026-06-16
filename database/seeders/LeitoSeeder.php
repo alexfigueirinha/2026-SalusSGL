@@ -17,7 +17,8 @@ class LeitoSeeder extends Seeder
             'leito' => '1',
             'atualizacao' => 'disponivel',
             'data_criacao' => now(),
-            'quartos_id' => 1
+            'quartos_id' => 1,
+            'alas_id' => 1
         ]);
     }
 }

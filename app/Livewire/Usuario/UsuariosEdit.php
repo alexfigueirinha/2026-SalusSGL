@@ -14,7 +14,6 @@ class UsuariosEdit extends Component
     public $status;
     public $senha;
     public $telefone;
-    public $status_usuario;
     public $data_cadastro;
     public $usuarioId;
 
@@ -27,7 +26,6 @@ class UsuariosEdit extends Component
         $this->status = $usuario->status;
         $this->senha = $usuario->senha;
         $this->telefone = $usuario->telefone;
-        $this->status_usuario = $usuario->status_usuario;
         $this->data_cadastro = $usuario->data_cadastro;
 
     }
@@ -41,7 +39,6 @@ class UsuariosEdit extends Component
         $usuario->status = $this->status;
         $usuario->senha = $this->senha;
         $usuario->telefone = $this->telefone;
-        $usuario->status_usuario = $this->status_usuario;
         $usuario->data_cadastro = $this->data_cadastro;
 
         $usuario->save();

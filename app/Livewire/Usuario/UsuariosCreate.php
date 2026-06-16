@@ -3,6 +3,7 @@
 namespace App\Livewire\Usuario;
 
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class UsuariosCreate extends Component
@@ -22,7 +23,7 @@ class UsuariosCreate extends Component
             'email' => $this->email,
             'tipo' => $this->tipo,
             'status' => $this->status,
-            'senha' => $this->senha,
+            'senha' => Hash::make('123'),
             'telefone' => $this->telefone,
             'data_cadastro' => $this->data_cadastro
         ]);

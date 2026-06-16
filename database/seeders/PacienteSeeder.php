@@ -18,7 +18,6 @@ class PacienteSeeder extends Seeder
             'cpf' => '22233344433',
             'data_nascimento' => '2008-12-14',
             'telefone' => '18999993333',
-            'leito_atual' => 1,
         ]);
     }
 }

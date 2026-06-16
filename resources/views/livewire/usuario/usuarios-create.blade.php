@@ -105,7 +105,7 @@
                             <option value="Inativo">Inativo</option>
                         </select>
                         <div class="mb-2 form-floating">
-                            <input type="password" class="form-control" wire:model="senha" id="floatingPassword" />
+                            <input type="password" class="form-control" wire:model="password" id="senha" />
                             <label for="floatingPassword">Senha</label>
                         </div>
                         <button class="btn btn-primary w-100 py-2" type="submit">
