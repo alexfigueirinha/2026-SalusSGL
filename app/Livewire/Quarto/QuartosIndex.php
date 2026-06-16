@@ -21,7 +21,7 @@ class QuartosIndex extends Component
 
     public function render()
     {
-        $quartos = Quarto::all();
+        $quartos = Quarto::where('quarto', 'like', '%' . $this->search . '%')->get();
         return view('livewire.quarto.quartos-index', compact('quartos'));
     }
 }

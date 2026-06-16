@@ -21,7 +21,7 @@ class PacientesIndex extends Component
 
     public function render()
     {
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::where('nome', 'like', '%' . $this->search . '%')->get();
         return view('livewire.paciente.pacientes-index', compact('pacientes'));
     }
 }

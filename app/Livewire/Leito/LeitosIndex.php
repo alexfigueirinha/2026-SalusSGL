@@ -22,7 +22,7 @@ class LeitosIndex extends Component
     public function render()
     {
 
-        $leitos = Leito::all();
+        $leitos = Leito::where('leito', 'like', '%' . $this->search . '%')->get();
         return view('livewire.leito.leitos-index', compact('leitos'));
     }
 }

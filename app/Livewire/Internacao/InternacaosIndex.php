@@ -20,7 +20,7 @@ class InternacaosIndex extends Component
     }
     public function render()
     {
-        $internacaos = Internacao::all();
+        $internacaos = Internacao::where('pacientes_id', 'like', '%' . $this->search . '%')->get();
         return view('livewire.internacao.internacaos-index', compact('internacaos'));
     }
 }

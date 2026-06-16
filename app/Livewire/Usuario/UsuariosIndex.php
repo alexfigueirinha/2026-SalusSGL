@@ -23,7 +23,7 @@ class UsuariosIndex extends Component
 
     {
 
-         $usuarios = Usuario::all();
+         $usuarios = Usuario::where('nome', 'like', '%' . $this->search . '%')->get();
         return view('livewire.usuario.usuarios-index', compact('usuarios'));
     }
 }
