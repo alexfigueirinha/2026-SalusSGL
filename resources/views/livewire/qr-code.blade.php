@@ -1,19 +1,63 @@
 <div>
+    <style>
+        .qr-render img {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 8px auto;
+        }
+    </style>
+
     <div class="d-flex flex-column vh-100">
-        <!-- TOPO -->
-        <div class="border-bottom p-3 bg-white shadow-sm">
+        <div class="border-bottom p-3 bg-white shadow-sm d-flex justify-content-between align-items-center">
             <h2 class="text-primary m-0">
                 <i class="bi bi-heart-pulse"></i>
                 SalusSGL
             </h2>
+
+            @auth
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark"
+                        id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-4 me-2 text-secondary"></i>
+
+                        <div class="d-none d-md-flex flex-column text-start me-2">
+                            <strong class="lh-1">{{ auth()->user()->name }}</strong>
+                            <small class="text-muted" style="font-size: 0.75rem;">
+                                {{ auth()->user()->tipo ?? 'Sem Cargo' }}
+                            </small>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownUser">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-person me-2"></i> Meu Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" class="m-0">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="bi bi-box-arrow-right me-2"></i> Sair
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
+                </a>
+            @endauth
         </div>
-        <!-- CONTEÚDO -->
         <div class="d-flex flex-grow-1">
-            <!-- SIDEBAR -->
             <div class="p-3 border-end bg-white shadow-sm" style="width: 250px;">
                 <ul class="nav flex-column gap-2">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="{{ 'dashboard' }}" class="nav-link active">
                             <i class="bi bi-grid-1x2-fill"></i>
                             Dashboard
                         </a>
@@ -65,132 +109,108 @@
                             <i class="bi bi-gear"></i>
                             Configurações
                         </a>
-
                     </li>
                 </ul>
             </div>
 
-<div style="padding: 24px; background-color: #f9fafb; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; color: #374151; box-sizing: border-box; width: 100%;">
-    
-    <!-- Cabeçalho Principal -->
-    <div style="margin-bottom: 24px;">
-        <h1 style="font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 4px 0;">Escaneamento de QR Code</h1>
-        <p style="font-size: 12px; color: #6b7280; margin: 0;">Escaneie o QR Code do leito para atualizar seu status rapidamente.</p>
-    </div>
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card shadow-sm border-0" style="border-radius: 12px;">
+                            <div class="card-header bg-primary text-white d-flex align-items-center"
+                                style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                                <i class="fas fa-qrcode me-2"></i>
+                                <h5 class="card-title mb-0" style="font-weight: 600;">Scanner de QR Code</h5>
+                            </div>
 
-    <!-- Layout Superior de Duas Colunas -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 32px;">
-        
-        <!-- Coluna Esquerda: Escaneamento e Informações -->
-        <div style="background-color: #ffffff; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 16px;">
-                    <svg width="16" height="16" style="color: #6b7280; display: block;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h.01M16 20h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2m-8 0H4a2 2 0 00-2 2v2a2 2 0 002 2h2m0-16H4a2 2 0 00-2 2v2a2 2 0 002 2h2m12-4h2a2 2 0 002-2V4a2 2 0 00-2-2h-2m-8 0H4a2 2 0 00-2-2v2a2 2 0 002-2h2"></path>
-                    </svg>
-                    <span>Escanear QR Code</span>
-                </div>
+                            <div class="card-body p-4">
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <i class="fas fa-check-circle me-2"></i> {{ session('message') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
 
-                <label style="display: block; font-size: 12px; font-weight: 500; color: #4b5563; margin-bottom: 4px;">Código do Leito</label>
-                <div style="position: relative; display: flex; align-items: center; margin-bottom: 16px;">
-                    <input type="text" wire:model.live.debounce.500ms="codigoQrInput" placeholder="Exemplo: QR101A, QR102B, etc." 
-                           style="width: 100%; border: 1px solid #d1d5db; color: #111827; font-size: 12px; border-radius: 8px; padding: 10px 100px 10px 12px; box-sizing: border-box;">
-                    <button type="button" style="position: absolute; right: 4px; top: 4px; bottom: 4px; background-color: #0f172a; color: #ffffff; font-size: 12px; padding: 0 16px; border: none; border-radius: 6px; cursor: pointer;">
-                        Escanear
-                    </button>
-                </div>
+                                @if (session()->has('error'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <i class="fas fa-exclamation-circle me-2"></i> {{ session('error') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
 
-                <!-- Card de Informação do Leito Ativo (Sem condicionais complexas) -->
-                <div style="border: 1px solid #dbeafe; background-color: rgba(239, 246, 255, 0.5); border-radius: 8px; padding: 16px; margin-top: 16px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                        <div>
-                            <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Leito Ativo</h3>
-                            <p style="font-size: 12px; color: #6b7280; margin: 2px 0 0 0;">Verifique as informações abaixo</p>
+                                <div class="mb-4">
+                                    <label for="inputQr" class="form-label text-muted"
+                                        style="font-size: 14px; font-weight: 500;">Bipe o código ou digite aqui</label>
+                                    <div style="position: relative;">
+                                        <input type="text" wire:model.live.debounce.500ms="codigoQrInput"
+                                            id="inputQr" placeholder="Exemplo: QR101A, QR102B..." autofocus
+                                            class="form-control form-control-lg text-center"
+                                            style="border-radius: 8px; border: 1px solid #cbd5e1; font-weight: 600; letter-spacing: 1px;">
+                                    </div>
+                                </div>
+
+                                @if ($leito_encontrado)
+                                    <div class="p-3 mb-4"
+                                        style="border: 1px solid #dbeafe; background-color: rgba(239, 246, 255, 0.7); border-radius: 8px;">
+                                        <h6 class="text-primary mb-3" style="font-weight: 600;"><i
+                                                class="fas fa-bed me-2"></i>Dados do Leito Encontrado</h6>
+
+                                        <table class="table table-borderless table-sm mb-0" style="font-size: 14px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-muted" style="width: 35%;">Identificação:</td>
+                                                    <td class="fw-bold text-dark">{{ $leito_encontrado->identificacao }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Quarto:</td>
+                                                    <td class="fw-bold text-dark">
+                                                        {{ $leito_encontrado->quartos->descricao ?? 'Sem quarto cadastrado' }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Paciente Atual:</td>
+                                                    <td class="fw-bold text-danger">{{ $pacienteQr }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <hr class="text-muted my-3" style="opacity: 0.15;">
+
+                                        <form wire:submit.prevent="atualizarStatus">
+                                            <div class="mb-3">
+                                                <label class="form-label text-muted"
+                                                    style="font-size: 13px; font-weight: 500;">Alterar Status do
+                                                    Leito</label>
+                                                <select wire:model="novoStatus" class="form-select"
+                                                    style="border-radius: 6px;">
+                                                    <option value="Disponível">Disponível</option>
+                                                    <option value="Ocupado">Ocupado</option>
+                                                    <option value="Manutenção">Manutenção</option>
+                                                    <option value="Limpeza">Limpeza</option>
+                                                </select>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success w-100 style-button"
+                                                style="border-radius: 6px; font-weight: 500;">
+                                                <i class="fas fa-save me-2"></i>Salvar Alterações
+                                            </button>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class="text-center py-4 text-muted">
+                                        <i class="fas fa-barcode fa-3x mb-2" style="opacity: 0.3;"></i>
+                                        <p class="mb-0" style="font-size: 14px;">Aguardando leitura do QR Code...
+                                        </p>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-                        <span style="padding: 4px 10px; font-size: 12px; font-weight: 600; border-radius: 9999px; color: #1e3a8a; background-color: #dbeafe;">
-                            Monitorado
-                        </span>
-                    </div>
-                    
-                    <div style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px;">
-                        <span style="font-size: 10px; text-transform: uppercase; font-weight: 700; color: #9ca3af; display: block; margin-bottom: 2px;">Paciente Selecionado</span>
-                        <p style="font-size: 14px; font-weight: 600; color: #1f2937; margin: 0;">{{ $pacienteAtual }}</p>
                     </div>
                 </div>
             </div>
-
-            <div style="font-size: 11px; color: #9ca3af; padding-top: 8px; border-top: 1px solid #f3f4f6; margin-top: 16px;">
-                Foco no leitor de QR Code para atualizar
-            </div>
-        </div>
-
-        <!-- Coluna Direita: Formulário de Atualização -->
-        <div style="background-color: #ffffff; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
-            <form wire:submit.prevent="atualizarStatus" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; margin: 0;">
-                <div>
-                    <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 16px;">
-                        <svg width="16" height="16" style="color: #6b7280; display: block;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 15H19M9 5a7 7 0 0112 5v1m-7 8H4v-4"></path>
-                        </svg>
-                        <span>Atualizar Status</span>
-                    </div>
-
-                    <div style="margin-bottom: 16px;">
-                        <label style="display: block; font-size: 12px; font-weight: 500; color: #4b5563; margin-bottom: 4px;">Novo Status</label>
-                        <select wire:model="novoStatus" style="width: 100%; background-color: #f9fafb; border: 1px solid #d1d5db; color: #111827; font-size: 12px; border-radius: 8px; padding: 10px; box-sizing: border-box;">
-                            <option value="">Selecione o status</option>
-                            <option value="Ocupado">Ocupado</option>
-                            <option value="Disponivel">Disponível</option>
-                            <option value="Em Limpeza">Em Limpeza</option>
-                            <option value="Manutencao">Manutenção</option>
-                            <option value="Emergencia">Emergência</option>
-                            <option value="Reservado">Reservado</option>
-                        </select>
-                    </div>
-
-                    <div style="margin-bottom: 16px;">
-                        <label style="display: block; font-size: 12px; font-weight: 500; color: #4b5563; margin-bottom: 4px;">Responsável pela Atualização *</label>
-                        <select wire:model="responsavel" style="width: 100%; background-color: #f9fafb; border: 1px solid #d1d5db; color: #111827; font-size: 12px; border-radius: 8px; padding: 10px; box-sizing: border-box;">
-                            <option value="">Selecione o responsável</option>
-                            <option value="1">Enfermagem Geral</option>
-                            <option value="2">Equipe de Higienização</option>
-                            <option value="3">Médico</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button type="submit" style="width: 100%; background-color: #64748b; color: #ffffff; font-size: 12px; font-weight: 600; padding: 12px; border: none; border-radius: 6px; cursor: pointer; margin-top: 16px;">
-                    Atualizar Status
-                </button>
-            </form>
         </div>
     </div>
-
-    <!-- Seção Inferior: Grid de Códigos QR Disponíveis -->
-    <div style="background-color: #ffffff; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
-        <h2 style="font-size: 14px; font-weight: 700; color: #111827; margin: 0 0 16px 0;">Códigos QR Disponíveis</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px;">
-            @foreach($leitosDisponiveis as $item)
-                <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; background-color: #ffffff; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;" wire:click="$set('codigoQrInput', '{{ $item->leito }}')">
-                    <div>
-                        <div style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #9ca3af; margin-bottom: 4px;">
-                            <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01"></path>
-                            </svg>
-                            <span style="font-family: monospace;">QR{{ $item->id }}</span>
-                        </div>
-                        <div style="font-size: 12px; font-weight: 700; color: #1f2937;">{{ $item->leito }}</div>
-                    </div>
-                    
-                    <div style="margin-top: 12px;">
-                        <span style="display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; color: #374151; background-color: #e5e7eb;">
-                            {{ $item->atualizacao }}
-                        </span>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
 </div>

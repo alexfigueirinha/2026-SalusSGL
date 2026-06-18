@@ -18,7 +18,8 @@ class LeitoSeeder extends Seeder
             'atualizacao' => 'disponivel',
             'data_criacao' => now(),
             'quartos_id' => 1,
-            'alas_id' => 1
+            'alas_id' => 1,
+            'codigo_qr' => 'QR101A'
         ]);
     }
 }

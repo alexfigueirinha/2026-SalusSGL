@@ -19,7 +19,7 @@ class Leito extends Model
     ];
 
     public function quartos() {
-    return $this->belongsTo(Quarto::class); 
+    return $this->belongsTo(Quarto::class, 'quartos_id'); 
     }
 
     public function alas() {

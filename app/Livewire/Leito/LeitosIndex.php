@@ -4,6 +4,7 @@ namespace App\Livewire\Leito;
 
 use App\Models\Leito;
 use Livewire\Component;
+use Chillerlan\QRCode\QRCode;
 
 class LeitosIndex extends Component
 {

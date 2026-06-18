@@ -30,8 +30,9 @@ class LeitosEdit extends Component
         $this->quartos_id = $leito->quartos_id;
         $this->data_criacao = $leito->data_criacao;
         $this->alas_id = $leito->alas_id;
-        $this->leitoId = $leito->id;
         $this->codigo_qr = $leito ->codigo_qr;
+        $this->leitoId = $leito->id;
+        
     }
 
     public function update()

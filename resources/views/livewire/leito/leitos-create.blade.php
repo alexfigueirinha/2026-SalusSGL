@@ -1,11 +1,49 @@
 <div>
     <div class="d-flex flex-column vh-100">
         <!-- TOPO -->
-        <div class="border-bottom p-3 bg-white shadow-sm">
+        <div class="border-bottom p-3 bg-white shadow-sm d-flex justify-content-between align-items-center">
             <h2 class="text-primary m-0">
                 <i class="bi bi-heart-pulse"></i>
                 SalusSGL
             </h2>
+
+            @auth
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark"
+                        id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-4 me-2 text-secondary"></i>
+
+                        <div class="d-none d-md-flex flex-column text-start me-2">
+                            <strong class="lh-1">{{ auth()->user()->name }}</strong>
+                            <small class="text-muted" style="font-size: 0.75rem;">
+                                {{ auth()->user()->tipo ?? 'Sem Cargo' }}
+                            </small>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownUser">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-person me-2"></i> Meu Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" class="m-0">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="bi bi-box-arrow-right me-2"></i> Sair
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
+                </a>
+            @endauth
         </div>
         <!-- CONTEÚDO -->
         <div class="d-flex flex-grow-1">
@@ -13,7 +51,7 @@
             <div class="p-3 border-end bg-white shadow-sm" style="width: 250px;">
                 <ul class="nav flex-column gap-2">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="{{ 'dashboard' }}" class="nav-link active">
                             <i class="bi bi-grid-1x2-fill"></i>
                             Dashboard
                         </a>
@@ -76,109 +114,50 @@
             </div>
 
             <!-- ÁREA CENTRAL -->
-            <main class="flex-grow-1 p-4 overflow-y-auto bg-light d-flex justify-content-center align-items-center">
-                <div class="container">
-                    <div class="row justify-content-center gap-4">
-
-                        <!-- FORMULÁRIO DE CADASTRO -->
-                        <div class="col-md-5 col-lg-4">
-                            <form class="card p-4 shadow-sm border-0 bg-white" wire:submit.prevent="store">
-                                <h3 class="d-flex align-items-center gap-2 mb-3 fs-5 font-bold text-dark">
-                                    <i class="bi bi-plus-circle text-primary"></i> Novo Leito
+            <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <form class="card p-4 shadow align-content-center" wire:submit.prevent="store">
+                                <h3 class="d-flex align-items-center">
+                                    <i class="bi bi-door-open me-1 fs-3"></i>
+                                    Novo Leito
                                 </h3>
-
                                 <div class="mb-2 form-floating">
-                                    <input type="text" class="form-control" wire:model="leito" id="floatingInput"
-                                        placeholder="Ex: 102 - B" required />
+                                    <input type="name" class="form-control" wire:model="leito" id="floatingInput" />
                                     <label for="floatingInput">Número do Leito</label>
-                                    @error('leito')
-                                        <span class="text-danger small">{{ $message }}</span>
-                                    @enderror
                                 </div>
-
-                                <div class="mb-2">
-                                    <select class="form-select py-2.5 text-muted" style="font-size: 14px;"
-                                        wire:model="alas_id" required>
-                                        <option value="">Selecione a ala</option>
-                                        @foreach ($alas as $ala)
-                                            <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('alas_id')
-                                        <span class="text-danger small">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-2">
-                                    <select class="form-select py-2.5 text-muted" style="font-size: 14px;"
-                                        wire:model="quartos_id" required>
-                                        <option value="">Selecione o quarto</option>
-                                        @foreach ($quartos as $quarto)
-                                            <option value="{{ $quarto->id }}">{{ $quarto->quarto }} -
-                                                {{ $quarto->alas->nome ?? 'Ala' }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('quartos_id')
-                                        <span class="text-danger small">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <select class="form-select py-2.5 text-muted" style="font-size: 14px;"
-                                        wire:model="atualizacao" required>
-                                        <option value="">Selecione o status inicial</option>
-                                        <option value="Disponivel">Disponível</option>
-                                        <option value="Ocupado">Ocupado</option>
-                                        <option value="Reservado">Reservado</option>
-                                        <option value="Emergencia">Emergência</option>
-                                        <option value="Manutencao">Manutenção</option>
-                                        <option value="Em Limpeza">Em Limpeza</option>
-                                    </select>
-                                    @error('atualizacao')
-                                        <span class="text-danger small">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="d-flex justify-content-end gap-2 pt-2 border-t">
-                                    <a href="{{ route('leito.index') }}" class="btn btn-outline-secondary px-3"
-                                        style="font-size: 14px;">Voltar</a>
-                                    <button class="btn btn-primary px-4" type="submit"
-                                        style="font-size: 14px; font-weight: 600;">
-                                        Criar Leito
-                                    </button>
+                                <select class="mb-2 form-select" wire:model="alas_id"
+                                    aria-label="Default select example">
+                                    <option selected>Selecione a ala</option>
+                                    @foreach ($alas as $ala)
+                                        <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="mb-2 form-select" wire:model="quartos_id"
+                                    aria-label="Default select example">
+                                    <option selected>Selecione o quarto</option>
+                                    @foreach ($quartos as $quarto)
+                                        <option value="{{ $quarto->id }}">{{ $quarto->quarto }} -
+                                            {{ $quarto->alas->nome }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="mb-2 form-select" wire:model="atualizacao"
+                                    aria-label="Default select example">
+                                    <option selected>Selecione o status inicial</option>
+                                    <option value="disponivel">Disponível</option>
+                                    <option value="ocupado">Ocupado</option>
+                                    <option value="reservado">Reservado</option>
+                                    <option value="emergencia">Emergência</option>
+                                    <option value="manutencao">Manutenção</option>
+                                    <option value="em_limpeza">Em Limpeza</option>
+                                </select>
+                                <div class="d-flex justify-content-end gap-2 mt-3">
+                                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                                    <button class="btn btn-primary" type="submit">Salvar</button>
                                 </div>
                             </form>
                         </div>
-
-                        <!-- FEEDBACK DO QR CODE GERADO EM TEMPO REAL -->
-                        @if ($qrCodeUrlResult)
-                            <div class="col-md-4">
-                                <div class="card p-4 shadow-sm border-0 bg-white text-center d-flex flex-column align-items-center justify-content-center"
-                                    id="printableQrCard">
-                                    <h4 class="fs-6 fw-bold text-success mb-3"><i class="bi bi-check2-circle"></i>
-                                        Código Gerado</h4>
-
-                                    <!-- Imagem real gerada pronta para o Scanner ler -->
-                                    <img src="{{ $qrCodeUrlResult }}" alt="QR Code"
-                                        class="img-fluid border p-2 rounded bg-white shadow-sm mb-2"
-                                        style="max-width: 180px;">
-
-                                    <div class="mb-3">
-                                        <span
-                                            class="badge bg-light text-dark border font-monospace fs-6 px-3 py-1.5">{{ $codigoIdentificador }}</span>
-                                        <small class="text-muted d-block mt-2" style="font-size: 11px;">Leito:
-                                            {{ $leito }}</small>
-                                    </div>
-
-                                    <!-- Botão javascript nativo para impressão direta da etiqueta -->
-                                    <button type="button" onclick="window.print()"
-                                        class="btn btn-dark btn-sm w-100 fw-semibold shadow-sm">
-                                        <i class="bi bi-printer me-1"></i> Imprimir Etiqueta
-                                    </button>
-                                </div>
-                            </div>
-                        @endif
-
                     </div>
                 </div>
             </main>
