@@ -14,7 +14,8 @@ class Leito extends Model
         'atualizacao',
         'data_criacao',
         'quartos_id',
-        'alas_id'
+        'alas_id',
+        'codigo_qr' 
     ];
 
     public function quartos() {

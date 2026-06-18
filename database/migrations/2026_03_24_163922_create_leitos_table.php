@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('status')->default('disponivel');
             $table->foreign('quartos_id')->references('id')->on('quartos');
             $table->foreign('alas_id')->references('id')->on('alas');
+            $table->string('codigo_qr');
        });
     }
 

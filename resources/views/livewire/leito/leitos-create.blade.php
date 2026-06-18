@@ -75,52 +75,113 @@
                 </ul>
             </div>
 
-    <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <form class="card p-4 shadow align-content-center" wire:submit.prevent='store'>
-                        <h3 class="d-flex align-items-center">
-                            <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" width="35" height="35">
-                                <path
-                                    d="M328 436h800q83 0 141.5 58.5T1328 636v200h-100q0-41-29.5-70.5T1128 736H878q-41 0-70.5 29.5T778 836H678q0-41-29.5-70.5T578 736H328q-41 0-70.5 29.5T228 836H128V636q0-83 58.5-141.5T328 436zM228 936h1000q41 0 70.5 29.5t29.5 70.5v300H128v-300q0-41 29.5-70.5T228 936zm200 500v50q0 21-14.5 35.5T378 1536H278q-21 0-35.5-14.5T228 1486v-50h200zm800 0v50q0 21-14.5 35.5T1178 1536h-100q-21 0-35.5-14.5T1028 1486v-50h200z" />
-                            </svg>
-                            Novo Leito
-                        </h3>
-                        <div class="mb-2 form-floating">
-                            <input type="name" class="form-control" wire:model="leito" id="floatingInput" />
-                            <label for="floatingInput">Número do Leito</label>
+            <!-- ÁREA CENTRAL -->
+            <main class="flex-grow-1 p-4 overflow-y-auto bg-light d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center gap-4">
+
+                        <!-- FORMULÁRIO DE CADASTRO -->
+                        <div class="col-md-5 col-lg-4">
+                            <form class="card p-4 shadow-sm border-0 bg-white" wire:submit.prevent="store">
+                                <h3 class="d-flex align-items-center gap-2 mb-3 fs-5 font-bold text-dark">
+                                    <i class="bi bi-plus-circle text-primary"></i> Novo Leito
+                                </h3>
+
+                                <div class="mb-2 form-floating">
+                                    <input type="text" class="form-control" wire:model="leito" id="floatingInput"
+                                        placeholder="Ex: 102 - B" required />
+                                    <label for="floatingInput">Número do Leito</label>
+                                    @error('leito')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-2">
+                                    <select class="form-select py-2.5 text-muted" style="font-size: 14px;"
+                                        wire:model="alas_id" required>
+                                        <option value="">Selecione a ala</option>
+                                        @foreach ($alas as $ala)
+                                            <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('alas_id')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-2">
+                                    <select class="form-select py-2.5 text-muted" style="font-size: 14px;"
+                                        wire:model="quartos_id" required>
+                                        <option value="">Selecione o quarto</option>
+                                        @foreach ($quartos as $quarto)
+                                            <option value="{{ $quarto->id }}">{{ $quarto->quarto }} -
+                                                {{ $quarto->alas->nome ?? 'Ala' }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('quartos_id')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <select class="form-select py-2.5 text-muted" style="font-size: 14px;"
+                                        wire:model="atualizacao" required>
+                                        <option value="">Selecione o status inicial</option>
+                                        <option value="Disponivel">Disponível</option>
+                                        <option value="Ocupado">Ocupado</option>
+                                        <option value="Reservado">Reservado</option>
+                                        <option value="Emergencia">Emergência</option>
+                                        <option value="Manutencao">Manutenção</option>
+                                        <option value="Em Limpeza">Em Limpeza</option>
+                                    </select>
+                                    @error('atualizacao')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="d-flex justify-content-end gap-2 pt-2 border-t">
+                                    <a href="{{ route('leito.index') }}" class="btn btn-outline-secondary px-3"
+                                        style="font-size: 14px;">Voltar</a>
+                                    <button class="btn btn-primary px-4" type="submit"
+                                        style="font-size: 14px; font-weight: 600;">
+                                        Criar Leito
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <select class="mb-2 form-select" wire:model="alas_id" aria-label="Default select example">
-                            <option selected>Selecione a ala</option>
-                            @foreach ($alas as $ala)
-                            <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
-                            @endforeach
-                        </select>
-                        <select class="mb-2 form-select" wire:model="quartos_id" aria-label="Default select example">
-                            <option selected>Selecione o quarto</option>
-                            @foreach ($quartos as $quarto)
-                            <option value="{{ $quarto->id }}">{{ $quarto->quarto }} - {{ $quarto->alas->nome }}</option>
-                            @endforeach
-                        </select>
-                        <select class="mb-2 form-select" wire:model="atualizacao" aria-label="Default select example">
-                            <option selected>Selecione o status inicial</option>
-                            <option value="disponivel">Disponível</option>
-                            <option value="ocupado">Ocupado</option>
-                            <option value="reservado">Reservado</option>
-                            <option value="emergencia">Emergência</option>
-                            <option value="manutencao">Manutenção</option>
-                            <option value="em_limpeza">Em Limpeza</option>
-                        </select>
-                        <div class="d-flex justify-content-end gap-2 mt-3">
-                            <button type="button" class="btn btn-outline-primary">Cancelar</button>
-                            <button class="btn btn-primary" type="submit">
-                                Criar
-                            </button>
-                        </div>
-                    </form>
+
+                        <!-- FEEDBACK DO QR CODE GERADO EM TEMPO REAL -->
+                        @if ($qrCodeUrlResult)
+                            <div class="col-md-4">
+                                <div class="card p-4 shadow-sm border-0 bg-white text-center d-flex flex-column align-items-center justify-content-center"
+                                    id="printableQrCard">
+                                    <h4 class="fs-6 fw-bold text-success mb-3"><i class="bi bi-check2-circle"></i>
+                                        Código Gerado</h4>
+
+                                    <!-- Imagem real gerada pronta para o Scanner ler -->
+                                    <img src="{{ $qrCodeUrlResult }}" alt="QR Code"
+                                        class="img-fluid border p-2 rounded bg-white shadow-sm mb-2"
+                                        style="max-width: 180px;">
+
+                                    <div class="mb-3">
+                                        <span
+                                            class="badge bg-light text-dark border font-monospace fs-6 px-3 py-1.5">{{ $codigoIdentificador }}</span>
+                                        <small class="text-muted d-block mt-2" style="font-size: 11px;">Leito:
+                                            {{ $leito }}</small>
+                                    </div>
+
+                                    <!-- Botão javascript nativo para impressão direta da etiqueta -->
+                                    <button type="button" onclick="window.print()"
+                                        class="btn btn-dark btn-sm w-100 fw-semibold shadow-sm">
+                                        <i class="bi bi-printer me-1"></i> Imprimir Etiqueta
+                                    </button>
+                                </div>
+                            </div>
+                        @endif
+
+                    </div>
                 </div>
-            </div>
+            </main>
         </div>
-    </main>
+    </div>
 </div>

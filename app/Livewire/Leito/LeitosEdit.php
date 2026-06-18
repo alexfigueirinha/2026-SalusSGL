@@ -15,6 +15,7 @@ class LeitosEdit extends Component
     public $quartos_id;
     public $alas_id;
     public $leitoId;
+    public $codigo_qr;
 
     public function mount($id)
     {
@@ -30,6 +31,7 @@ class LeitosEdit extends Component
         $this->data_criacao = $leito->data_criacao;
         $this->alas_id = $leito->alas_id;
         $this->leitoId = $leito->id;
+        $this->codigo_qr = $leito ->codigo_qr;
     }
 
     public function update()
@@ -59,6 +61,7 @@ class LeitosEdit extends Component
         $leito->data_criacao = $this->data_criacao;
         $leito->quartos_id = $this->quartos_id;
         $leito->alas_id = $this->alas_id;
+        $leito->codigo_qr = $this->codigo_qr;
 
         $leito->save();
 
