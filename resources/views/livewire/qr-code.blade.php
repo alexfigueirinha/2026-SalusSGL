@@ -54,10 +54,10 @@
             @endauth
         </div>
         <div class="d-flex flex-grow-1">
-            <div class="p-3 border-end bg-white shadow-sm" style="width: 250px;">
+        <div class="p-3 border-end bg-white shadow-sm" style="width: 250px;">
                 <ul class="nav flex-column gap-2">
                     <li class="nav-item">
-                        <a href="{{ 'dashboard' }}" class="nav-link active">
+                        <a href="{{ route('dashboard') }}" class="nav-link active">
                             <i class="bi bi-grid-1x2-fill"></i>
                             Dashboard
                         </a>
@@ -99,6 +99,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('movimentacaoLeito.index') }}" class="nav-link">
+                            <i class="bi bi-clock-history"></i>
+                            Histórico
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('qrCode') }}" class="nav-link">
                             <i class="bi bi-qr-code"></i>
                             QR Code
@@ -109,6 +115,7 @@
                             <i class="bi bi-gear"></i>
                             Configurações
                         </a>
+
                     </li>
                 </ul>
             </div>

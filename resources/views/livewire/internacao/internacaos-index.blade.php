@@ -51,7 +51,7 @@
             <div class="p-3 border-end bg-white shadow-sm" style="width: 250px;">
                 <ul class="nav flex-column gap-2">
                     <li class="nav-item">
-                        <a href="{{ 'dashboard' }}" class="nav-link active">
+                        <a href="{{ route('dashboard') }}" class="nav-link active">
                             <i class="bi bi-grid-1x2-fill"></i>
                             Dashboard
                         </a>
@@ -99,7 +99,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('qrCode') }}" class="nav-link">
                             <i class="bi bi-qr-code"></i>
                             QR Code
                         </a>
@@ -109,10 +109,10 @@
                             <i class="bi bi-gear"></i>
                             Configurações
                         </a>
+
                     </li>
                 </ul>
             </div>
-
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="mt-4">Internações</h2>

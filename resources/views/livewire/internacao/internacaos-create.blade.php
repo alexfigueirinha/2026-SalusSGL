@@ -51,7 +51,7 @@
             <div class="p-3 border-end bg-white shadow-sm" style="width: 250px;">
                 <ul class="nav flex-column gap-2">
                     <li class="nav-item">
-                        <a href="{{ 'dashboard' }}" class="nav-link active">
+                        <a href="{{ route('dashboard') }}" class="nav-link active">
                             <i class="bi bi-grid-1x2-fill"></i>
                             Dashboard
                         </a>
@@ -99,7 +99,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('qrCode') }}" class="nav-link">
                             <i class="bi bi-qr-code"></i>
                             QR Code
                         </a>
@@ -109,6 +109,7 @@
                             <i class="bi bi-gear"></i>
                             Configurações
                         </a>
+
                     </li>
                 </ul>
             </div>
@@ -122,25 +123,29 @@
                                     <i class="bi bi-door-open me-1 fs-3"></i>
                                     Registrar Internação
                                 </h3>
-                                <select class="mb-2 form-select" wire:model='pacientes_id' aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='pacientes_id'
+                                    aria-label="Default select example">
                                     <option selected>Selecione o paciente</option>
                                     @foreach ($pacientes as $paciente)
                                         <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
                                     @endforeach
                                 </select>
-                                <select class="mb-2 form-select" wire:model='alas_id' aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='alas_id'
+                                    aria-label="Default select example">
                                     <option selected>Selecione a ala</option>
                                     @foreach ($alas as $ala)
                                         <option value="{{ $ala->id }}">{{ $ala->nome }}</option>
                                     @endforeach
                                 </select>
-                                <select class="mb-2 form-select" wire:model='quartos_id' aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='quartos_id'
+                                    aria-label="Default select example">
                                     <option selected>Selecione o quarto</option>
                                     @foreach ($quartos as $quarto)
                                         <option value="{{ $quarto->id }}">{{ $quarto->quarto }}</option>
                                     @endforeach
                                 </select>
-                                <select class="mb-2 form-select" wire:model='leitos_id' aria-label="Default select example">
+                                <select class="mb-2 form-select" wire:model='leitos_id'
+                                    aria-label="Default select example">
                                     <option selected>Selecione o leito</option>
                                     @foreach ($leitos as $leito)
                                         <option value="{{ $leito->id }}">{{ $leito->leito }}</option>
@@ -159,16 +164,18 @@
             </main>
         </div>
 
-        @if($quarto_id != $internacao_original_quarto_id)
-    <div class="row border p-3 mb-3 bg-light rounded animate__animated animate__fadeIn">
-        <p class="text-warning fw-bold">⚠️ Atenção: Você está alterando o leito. Preencha os dados da movimentação:</p>
-        <div class="col-md-6 mb-3">
-            <label>Motivo da Movimentação</label>
-            <input type="text" class="form-control" wire:model="motivo">
-        </div>
-        <div class="col-md-6 mb-3">
-            <label>Solicitado Por</label>
-            <input type="text" class="form-control" wire:model="solicitado_por">
-        </div>
-    </div>
-@endif
+        @if ($leitos_id != $internacao_original_leito_id)
+            <div class="row border p-3 mb-3 bg-light rounded animate__animated animate__fadeIn">
+                <p class="text-warning fw-bold">⚠️ Atenção: Você está alterando o leito. Preencha os dados da
+                    movimentação:</p>
+                <div class="col-md-6 mb-3">
+                    <label>Motivo da Movimentação</label>
+                    <input type="text" class="form-control" wire:model="motivo">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Solicitado Por</label>
+                    <input type="text" class="form-control" wire:model="solicitado_por">
+                </div>
+            </div>
+        @endif
+        

@@ -24,7 +24,7 @@ class Ala extends Model
 
     public function leitos()
     {
-        return $this->hasMany(Leito::class);
+        return $this->hasMany(Leito::class, 'alas_id');
     }
 
     public function internacaos()

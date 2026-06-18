@@ -52,7 +52,7 @@
             <div class="p-3 border-end bg-white shadow-sm" style="width: 250px;">
                 <ul class="nav flex-column gap-2">
                     <li class="nav-item">
-                        <a href="{{ 'dashboard' }}" class="nav-link active">
+                        <a href="{{ route('dashboard') }}" class="nav-link active">
                             <i class="bi bi-grid-1x2-fill"></i>
                             Dashboard
                         </a>
@@ -94,7 +94,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('movimentacaoLeito.index') }}" class="nav-link">
+                            <i class="bi bi-clock-history"></i>
+                            Histórico
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('qrCode') }}" class="nav-link">
                             <i class="bi bi-qr-code"></i>
                             QR Code
                         </a>
@@ -108,7 +114,6 @@
                     </li>
                 </ul>
             </div>
-
 
             <main class="flex-grow-1 d-flex justify-content-center align-items-center p-4">
                 <div class="container mt-5">
