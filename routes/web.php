@@ -28,6 +28,8 @@ use App\Livewire\StatusLeito\StatusLeitosIndex;
 use App\Livewire\Usuario\UsuariosCreate;
 use App\Livewire\Usuario\UsuariosEdit;
 use App\Livewire\Usuario\UsuariosIndex;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/internacao/create', InternacaosCreate::class)->name('internacao.create');
@@ -70,3 +72,11 @@ Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
 Route::get('/qrCode', QrCode::class)->name('qrCode');
 
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/login'); 
+})->name('logout');
