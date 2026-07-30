@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Ala;
 use App\Models\Leito;
 use App\Models\Paciente;
+use App\Models\Internacao;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -15,32 +16,46 @@ class Dashboard extends Component
     public $taxaOcupacao;
     public $totalAlas;
     public $pacientesInternados;
-    
-    // CLIQUE AQUI E ADICIONE ESTA LINHA:
-    public $alas; 
+    public $alas;
+    public $leitosLimpeza;
+    public $leitosManutencao;
+    public $leitosEmergencia;
+    public $leitosReservados;
 
-           public function mount()
+    public function mount()
     {
+        $this->atualizarDados();
+    }
+
+    public function atualizarDados()
+    {
+        // Total de leitos
         $this->totalLeitos = Leito::count();
         
-        $this->leitosOcupados = Leito::whereHas('statusLeitos', function($q) {
-            $q->where('status', 'ocupado');
-        })->count();
-
-        $this->leitosDisponiveis = Leito::whereHas('statusLeitos', function($q) {
-            $q->where('status', 'disponivel');
-        })->count();
-
-        $this->pacientesInternados = Paciente::count(); 
-        $this->totalAlas = Ala::count(); 
-
-        $this->alas = Ala::with('leitos.statusLeitos')->get();
-
+        // Total de alas
+        $this->totalAlas = Ala::count();
+        
+        // Carregar todas as alas com seus leitos
+        $this->alas = Ala::with(['leitos.internacaoAtiva.paciente'])
+            ->whereHas('leitos')
+            ->get();
+        
+        // Contar por status diretamente da tabela leitos
+        $this->leitosDisponiveis = Leito::where('status', 'disponivel')->count();
+        $this->leitosOcupados = Leito::where('status', 'ocupado')->count();
+        $this->leitosLimpeza = Leito::where('status', 'em_limpeza')->count();
+        $this->leitosManutencao = Leito::where('status', 'manutencao')->count();
+        $this->leitosEmergencia = Leito::where('status', 'emergencia')->count();
+        $this->leitosReservados = Leito::where('status', 'reservado')->count();
+        
+        // Pacientes internados
+        $this->pacientesInternados = Internacao::whereNull('data_hora_saida')->count();
+        
+        // Calcular taxa de ocupação
         $this->taxaOcupacao = $this->totalLeitos > 0
             ? round(($this->leitosOcupados / $this->totalLeitos) * 100, 1)
             : 0;
     }
-
 
     public function render()
     {
