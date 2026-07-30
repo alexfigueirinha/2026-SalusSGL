@@ -104,13 +104,7 @@
                             QR Code
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="bi bi-gear"></i>
-                            Configurações
-                        </a>
-
-                    </li>
+                    
                 </ul>
             </div>
             <div class="container">
@@ -149,25 +143,33 @@
                             <th>Ações</th>
                         </tr>
                     </thead>
-
-                    <tbody>
-                        @foreach ($internacaos as $internacao)
-                            <tr>
-                                <td>{{ $internacao->id }}</td>
-                                <td>{{ $internacao->pacientes->nome }}</td>
-                                <td>{{ $internacao->alas_id }} - {{ $internacao->alas->nome }}</td>
-                                <td>{{ $internacao->quartos_id }} - {{ $internacao->quartos->quarto }}</td>
-                                <td>{{ $internacao->leitos_id }} - {{ $internacao->leitos->leito }}</td>
-                                <td>{{ \Carbon\Carbon::parse($internacao->data_hora_entrada)->format('d/m/Y') }}</td>
-                                <td>
-                                    <a href="{{ route('internacao.edit', ['id' => $internacao->id]) }}"
-                                        class="btn btn-primary btn-sm">Editar</a>
-                                    <button class="btn btn-danger btn-sm" wire:click="delete({{ $internacao->id }})"
-                                        wire:confirm="Deseja excluir o quarto?">Excluir</button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+<tbody>
+    @foreach ($internacaos as $internacao)
+        <tr>
+            <td>{{ $internacao->id }}</td>
+            
+            {{-- Corrigido de 'pacientes' para 'paciente' --}}
+            <td>{{ $internacao->paciente->nome ?? 'Paciente não encontrado' }}</td>
+            
+            {{-- Apenas para exibir a Ala, usamos o relacionamento 'ala' (singular) --}}
+            <td>{{ $internacao->ala->nome ?? 'Ala não encontrada' }}</td>
+            
+            {{-- Apenas para exibir o Quarto, usamos 'quarto' --}}
+            <td>{{ $internacao->quarto->quarto ?? 'Quarto não encontrado' }}</td>
+            
+            {{-- Apenas para exibir o Leito, usamos 'leito' --}}
+            <td>{{ $internacao->leito->leito ?? 'Leito não encontrado' }}</td>
+            
+            <td>{{ \Carbon\Carbon::parse($internacao->data_hora_entrada)->format('d/m/Y H:i') }}</td>
+            <td>
+                <a href="{{ route('internacao.edit', ['id' => $internacao->id]) }}"
+                    class="btn btn-primary btn-sm">Editar</a>
+                <button class="btn btn-danger btn-sm" wire:click="delete({{ $internacao->id }})"
+                    wire:confirm="Deseja excluir esta internação?">Excluir</button>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
                 </table>
             </div>
         </div>

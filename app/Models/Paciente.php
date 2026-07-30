@@ -18,6 +18,13 @@ class Paciente extends Model
 
     public function internacaos()
     {
-        return $this->hasMany(Internacao::class);
+        return $this->hasMany(Internacao::class, 'pacientes_id');
+    }
+
+    public function internacaoAtiva()
+    {
+        return $this->hasOne(Internacao::class, 'pacientes_id')
+            ->whereNull('data_hora_saida')
+            ->orderBy('data_hora_entrada', 'desc');
     }
 }

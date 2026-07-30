@@ -101,13 +101,7 @@
                             QR Code
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="bi bi-gear"></i>
-                            Configurações
-                        </a>
-
-                    </li>
+                   
                 </ul>
             </div>
 
