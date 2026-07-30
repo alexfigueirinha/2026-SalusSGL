@@ -32,45 +32,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/internacao/create', InternacaosCreate::class)->name('internacao.create');
-Route::get('/internacao/index', InternacaosIndex::class)->name('internacao.index');
-Route::get('/internacao/edit/{id}', InternacaosEdit::class)->name('internacao.edit');
-
-Route::get('/pacientes/create', PacientesCreate::class)->name('paciente.create');
-Route::get('/pacientes/index', PacientesIndex::class)->name('paciente.index');
-Route::get('/pacientes/edit/{id}', PacientesEdit::class)->name('paciente.edit');
-
-Route::get('/quarto/create', QuartosCreate::class)->name('quarto.create');
-Route::get('/quarto/index', QuartosIndex::class)->name('quarto.index');
-Route::get('/quarto/edit/{id}', QuartosEdit::class)->name('quarto.edit');
-
-Route::get('/status/quarto/create', StatusQuartosCreate::class)->name('status.quarto.create');
-Route::get('/status/quarto/index', StatusQuartosIndex::class)->name('status.quarto.index');
-Route::get('/status/quarto/edit/{id}', StatusQuartosEdit::class)->name('status.quarto.edit');
-
-Route::get('ala/create', AlasCreate::class)->name('ala.create');
-Route::get('ala/index', AlasIndex::class)->name('ala.index');
-Route::get('ala/edit/{id}', AlasEdit::class)->name('ala.edit');
-
-Route::get('leito/create', LeitosCreate::class)->name('leito.create');
-Route::get('leito/index', LeitosIndex::class)->name('leito.index');
-Route::get('leito/edit/{id}', LeitosEdit::class)->name('leito.edit');
-
-Route::get('movimentacaoLeito/index', MovimentacaoLeitosIndex::class)->name('movimentacaoLeito.index');
-
-Route::get('status/leito/create', StatusLeitosCreate::class)->name('status.leito.create');
-Route::get('status/leito/index', StatusLeitosIndex::class)->name('status.leito.index');
-Route::get('status/leito/edit/{id}', StatusLeitosEdit::class)->name('status.leito.editar');
-
-Route::get('usuario/create', UsuariosCreate::class)->name('usuario.create');
-Route::get('usuario/index', UsuariosIndex::class)->name('usuario.index');
-Route::get('usuario/edit/{id}', UsuariosEdit::class)->name('usuario.edit');
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
 Route::get('/login', Login::class)->name('login');
-
-Route::get('/dashboard', Dashboard::class)->name('dashboard');
-
-Route::get('/qrCode', QrCode::class)->name('qrCode');
 
 Route::post('/logout', function (Request $request) {
     Auth::logout();
@@ -78,5 +44,47 @@ Route::post('/logout', function (Request $request) {
     $request->session()->invalidate();
     $request->session()->regenerateToken();
 
-    return redirect('/login'); 
+    return redirect('/');
 })->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/internacao/create', InternacaosCreate::class)->name('internacao.create');
+    Route::get('/internacao/index', InternacaosIndex::class)->name('internacao.index');
+    Route::get('/internacao/edit/{id}', InternacaosEdit::class)->name('internacao.edit');
+
+    Route::get('/pacientes/create', PacientesCreate::class)->name('paciente.create');
+    Route::get('/pacientes/index', PacientesIndex::class)->name('paciente.index');
+    Route::get('/pacientes/edit/{id}', PacientesEdit::class)->name('paciente.edit');
+
+    Route::get('/quarto/create', QuartosCreate::class)->name('quarto.create');
+    Route::get('/quarto/index', QuartosIndex::class)->name('quarto.index');
+    Route::get('/quarto/edit/{id}', QuartosEdit::class)->name('quarto.edit');
+
+    Route::get('/status/quarto/create', StatusQuartosCreate::class)->name('status.quarto.create');
+    Route::get('/status/quarto/index', StatusQuartosIndex::class)->name('status.quarto.index');
+    Route::get('/status/quarto/edit/{id}', StatusQuartosEdit::class)->name('status.quarto.edit');
+
+    Route::get('ala/create', AlasCreate::class)->name('ala.create');
+    Route::get('ala/index', AlasIndex::class)->name('ala.index');
+    Route::get('ala/edit/{id}', AlasEdit::class)->name('ala.edit');
+
+    Route::get('leito/create', LeitosCreate::class)->name('leito.create');
+    Route::get('leito/index', LeitosIndex::class)->name('leito.index');
+    Route::get('leito/edit/{id}', LeitosEdit::class)->name('leito.edit');
+
+    Route::get('movimentacaoLeito/index', MovimentacaoLeitosIndex::class)->name('movimentacaoLeito.index');
+
+    Route::get('status/leito/create', StatusLeitosCreate::class)->name('status.leito.create');
+    Route::get('status/leito/index', StatusLeitosIndex::class)->name('status.leito.index');
+    Route::get('status/leito/edit/{id}', StatusLeitosEdit::class)->name('status.leito.editar');
+
+    Route::get('usuario/create', UsuariosCreate::class)->name('usuario.create');
+    Route::get('usuario/index', UsuariosIndex::class)->name('usuario.index');
+    Route::get('usuario/edit/{id}', UsuariosEdit::class)->name('usuario.edit');
+
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
+
+    Route::get('/qrCode', QrCode::class)->name('qrCode');
+    
+});
