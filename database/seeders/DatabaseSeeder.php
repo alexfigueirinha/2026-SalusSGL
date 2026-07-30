@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Usuario::create([
-            'nome' => 'Admin',
-            'email' => 'admin@senai.com',
+            'nome' => 'Gestor',
+            'email' => 'gestor@salussgl.com',
             'senha' => Hash::make('123'),
-            'telefone' => '11999999999',
+            'telefone' => '18999999999',
             'tipo' => 'gestor',
             'status' => 'ativo'
         ]);

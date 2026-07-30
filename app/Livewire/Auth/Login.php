@@ -13,7 +13,7 @@ class Login extends Component
 
     protected $rules = [
         'email' => 'required|email',
-        'password' =>'required'
+        'password' => 'required'
     ];
 
     protected $messages = [
@@ -21,21 +21,25 @@ class Login extends Component
         'email.email' => 'formato de email incorreto',
         'password.required' => 'campo senha obrigatório'
     ];
-    
-    public function login(){
+
+    public function login()
+    {
         $this->validate();
 
-        if(Auth::attempt([
-            'email' =>$this->email,
-            'password' =>$this->password
-        ])){
+        $credentials = [
+            'email' => $this->email,
+            'password' => $this->password
+        ];
+
+        if (Auth::attempt($credentials)) {
             session()->regenerate();
 
-            return redirect()->route('dashboard');
+            return redirect()->intended(route('dashboard'));
         }
 
         session()->flash('error', 'email ou senha incorretos');
     }
+
     public function render()
     {
         return view('livewire.auth.login');
